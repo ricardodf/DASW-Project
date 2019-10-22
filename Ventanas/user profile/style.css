@@ -2,10 +2,14 @@ h1, h2 {
   text-align: center;
 }
 
-.card-header {
-  text-align: center;
+#nuevaMateria {
+  margin-top: 5px;
 }
 
-.center {
-  align-content: center;
+.card {
+  margin-top: 50px;
+}
+
+p.card-text {
+  text-align: justify;
 }
