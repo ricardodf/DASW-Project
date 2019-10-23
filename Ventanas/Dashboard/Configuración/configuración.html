@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Settings</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-dark bg-dark">  
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="navbar-toggler-icon"></span>
+                            </button> <a class="navbar-brand" href="#">Dashboard</a>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item-active">
+                                         <a class="nav-link" href="#">Exámenes</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown">Clases</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                             <a class="dropdown-item" href="#">Agregar una clase</a> 
+                                             <a class="dropdown-item" href="#">Horario</a>
+                                             <a href="#nuevaclase" class="dropdown-item" data-toggle="modal" data-target="#nuevaclase">Nueva clase wey</a>
+                                             <div class="modal" id="nuevaclase">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content"> 
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Contacto</h5> 
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="container">
+                                                                    <form action="/action_page.php">
+                                                                      <label for="fname">Nombre</label>
+                                                                      <br>
+                                                                      <input type="text" id="fname" name="firstname">
+                                                                      <br>
+                                                                      <label for="lname">Apellidos</label>
+                                                                      <br>
+                                                                      <input type="text" id="lname" name="lastname">
+                                                                      <br><br><br>
+                                                                      <label for="subject">Mensaje</label>
+                                                                      <br>
+                                                                      <textarea id="subject" name="subject" placeholder="Escribe tu mensaje..." style="height:100px; width:300px"></textarea>
+                                                                  
+                                                                      <input type="submit" value="Submit">
+                                                                    </form>
+                                                                  </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-dismiss = "modal">Cerrar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav ml-md-auto">
+                                    
+                                    <li class="nav-item dropdown">
+                                         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Omar Pérez</a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                             <a class="dropdown-item" href="#">Configuración</a> <a class="dropdown-item" href="#">Mi perfil</a> <a class="dropdown-item" href="#">Ayuda</a>
+                                            <div class="dropdown-divider">
+                                            </div> <a class="dropdown-item" href="#">Cerrar sesión</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <br>
+                        <br>
+                        <br>
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <ul class="nav flex-column nav-pills">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">Datos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Privacidad</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Clases</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8">
+                                <form role="form">
+                                    <div class="form-group">
+                                         <h4 class="muted">
+                                             Usuario
+                                         </h4>
+                                         <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="" srcset=""> 
+                                        </n> Omar Pérez
+                                         <br>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">
+                                            Cambiar contraseña
+                                        </label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" />
+                                    </div>
+                                    <div class="form-group">
+                                         
+                                        <label for="exampleInputFile">
+                                            Cambiar Imagen
+                                        </label>
+                                        <input type="file" class="form-control-file" id="exampleInputFile" />
+                                    </div>
+                                    <div class="checkbox">
+                                         
+                                        <label>
+                                            <input type="checkbox" /> Iniciar sesión automáticamente
+                                        </label>
+                                    </div> 
+                                    <button type="submit" class="btn btn-primary">
+                                        Guardar cambios
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
