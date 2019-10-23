@@ -15,31 +15,6 @@
                 background-image: url("main_wallpaper.jpg");
             }
       </style>
-    <!-- Barra Inferior -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
-        <div class="container">
-            <a class="navbar-brand" href="#">Nombre Chido de App</a>
-            <button class="navbar-toggler" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Acerca de</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Servicios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
-                </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
     <!-- Página Principal -->
     <section>
@@ -159,6 +134,97 @@
         <a href="#" class="btn btn-success btn-rounded btn-lg my-3" data-toggle="modal" data-target="#CuadroLogInReg">Log In</a>
     </div>
 
+    <!-- Barra Inferior -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="#">Nombre Chido de App</a>
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle = "modal" data-target= "#acercade">Acerca de</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle = "modal" data-target= "#servicios">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle = "modal" data-target= "#contacto">Contacto</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Barra Inferior, Acerca De-->
+    <div class="modal fade" id="acercade">
+        <div class="modal-dialog">
+            <div class="modal-content"> 
+                <div class="modal-header">
+                    <h5 class="modal-title">¿Quienes Somos?</h5> 
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis amet ut, quam accusantium quo qui quos placeat nobis sed quaerat sequi aliquam vel. Rerum, beatae consequuntur cumque incidunt et saepe?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss = "modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Barra Inferior, Servicios-->
+    <div class="modal fade" id="servicios">
+        <div class="modal-dialog">
+            <div class="modal-content"> 
+                <div class="modal-header">
+                    <h5 class="modal-title">Servicios</h5> 
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis amet ut, quam accusantium quo qui quos placeat nobis sed quaerat sequi aliquam vel. Rerum, beatae consequuntur cumque incidunt et saepe?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss = "modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra Inferior, Contacto-->
+    <div class="modal fade" id="contacto">
+        <div class="modal-dialog">
+            <div class="modal-content"> 
+                <div class="modal-header">
+                    <h5 class="modal-title">Contacto</h5> 
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form action="/action_page.php">
+                          <label for="fname">Nombre</label>
+                          <br>
+                          <input type="text" id="fname" name="firstname">
+                          <br>
+                          <label for="lname">Apellidos</label>
+                          <br>
+                          <input type="text" id="lname" name="lastname">
+                          <br><br><br>
+                          <label for="subject">Mensaje</label>
+                          <br>
+                          <textarea id="subject" name="subject" placeholder="Escribe tu mensaje..." style="height:100px; width:300px"></textarea>
+                      
+                          <input type="submit" value="Submit">
+                        </form>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss = "modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
