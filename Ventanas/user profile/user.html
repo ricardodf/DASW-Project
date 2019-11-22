@@ -82,9 +82,12 @@
               <div class="card center" style="width: 18rem;">
                 <div class="card-header text-center">
                   Nombre
+                  <button id="editarNombre" type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEditarNombre">
+                    <i class="far fa-edit"></i>
+                  </button>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Perenganito</li>
+                  <li id="nombre" class="list-group-item">Perenganito</li>
                 </ul>
               </div>
             </div>
@@ -92,9 +95,12 @@
               <div class="card" style="width: 18rem;">
                 <div class="card-header text-center">
                   Email
+                  <button id="editarEmail" type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEditarCorreo">
+                    <i class="far fa-edit"></i>
+                  </button>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">is715963@iteso.mx</li>
+                  <li id="correo" class="list-group-item">is715963@iteso.mx</li>
                 </ul>
               </div>
             </div>
@@ -102,6 +108,60 @@
           <div class="col-6">
             <h2>Horario</h2>
             <img src="HorarioWEB.png" class="img-fluid" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- ModalEditarNombre-->
+    <div class="modal" id="modalEditarNombre" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar nombre</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="far fa-user"></i></span>
+              </div>
+              <input id="nombreNuevo" type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="guardarNombre" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ModalEditarCorreo-->
+    <div class="modal" id="modalEditarCorreo" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar correo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
+              </div>
+              <input id="correoNuevo" type="email" class="form-control" placeholder="Correo" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="guardarCorreo" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -326,5 +386,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2b9e5f253e.js" crossorigin="anonymous"></script>
+    <script src="editInfo.js"></script>
   </body>
 </html>
