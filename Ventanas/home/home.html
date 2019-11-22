@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>DASW</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Individual CSS-->
+        <link rel="stylesheet" href="home.css">
+    </head>
+    <body>
+        <!-- Parte Login/Registro -->
+        <section >
+            <div class="controlSquare">
+                <div id="loginTitle">
+                    <h3> Iniciar Sesión</h3>
+                </div>
+                <div id="loginForm">
+                    <form>
+                        <div class="form-group">
+                            <label for="InputEmail1">Correo</label>
+                            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Ingresa correo">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputPassword1">Contraseña</label>
+                            <input type="password" class="form-control" id="InputPassword1" placeholder="*****">
+                        </div>
+                        <div class="submitLogin">
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-lg">Log In</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="registerInfo">
+                    <br><hr size="10px"><br>
+                    <h5>¿No tienes cuenta?</h5>
+                    <div id="btnVerdeReg">
+                        <a href="#" class="btn btn-success btn-rounded btn-lg my-3" data-toggle="modal" data-target="#CuadroRegistro">Registrate</a>
+                    </div>
+                </div> 
+            </div>
+        </section>
+
+        <!-- FORMA REGISTRO-->
+        <div class="modal fade" id="CuadroRegistro" tabindex="-1" role="dialog" aria-labelledby="CuadroRegistrolLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="CuadroRegistrolLabel">Registro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="registro">
+                            <div class="form-group">
+                                <label for="nombreUsuario">Nombre</label>
+                                <input type="text" class="form-control" id="nombreUsuario" placeholder="...">
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidoUsuario">Apellidos</label>
+                                <input type="email" class="form-control" id="apellidoUsuario" placeholder="...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Correo</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingresa un correo válido">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Contraseña</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*****">
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Acepto Terminos y Condiciones</label>
+                            </div>
+                            <hr><br>
+                            <div id="submitReg">
+                                <button type="submit" class="btn btn-primary" disabled>Confirmar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Barra Inferior -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle = "modal" data-target= "#acercade">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle = "modal" data-target= "#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle = "modal" data-target= "#contacto">Contacto</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Barra Inferior, Acerca De-->
+        <div class="modal fade" id="acercade">
+            <div class="modal-dialog">
+                <div class="modal-content"> 
+                    <div class="modal-header">
+                        <h5 class="modal-title">Acerca De</h5> 
+                    </div>
+                    <div class="modal-body">
+                        <p>Nuestro proyecto consiste en crear un planificador escolar para alumnos. En donde tendrá la
+                            opción de crear tareas, recordatorios o eventos dentro de una interfaz intuitiva y accesible
+                            desde cualquier computadora.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss = "modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Barra Inferior, Servicios-->
+        <div class="modal fade" id="servicios">
+            <div class="modal-dialog">
+                <div class="modal-content"> 
+                    <div class="modal-header">
+                        <h5 class="modal-title">Servicios</h5> 
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li>Crear tus propias materia y horarios</li>
+                            <li>Gestionar tareas, proyectos y eventos fácilmente</li>
+                            <li>Tener recordatorios y alarmas</li>
+                            <li>Un dashboard interactivo y fácil de usar</li>
+                            <li>Un calendario con el resumén de tus pendientes</li>
+                        </ul>          
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss = "modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra Inferior, Contacto-->
+        <div class="modal fade" id="contacto">
+            <div class="modal-dialog">
+                <div class="modal-content"> 
+                    <div class="modal-header">
+                        <h5 class="modal-title">Servicios</h5> 
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Correo</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingresa correo">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Mensaje</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            </div>
+                            <button onclick="sendMail(); return false;" type="submit" class="btn btn-primary btnEnviarMail">Enviar mensaje</button>
+                        </form>    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss = "modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="home.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
