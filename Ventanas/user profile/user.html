@@ -25,7 +25,7 @@
                 <li class="nav-item dropdown">
                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Clases</a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalRegistrarse">Agregar una clase</a> <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalHorario">Horario</a>
+                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalNuevaMateria">Agregar una clase</a> <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalHorario">Horario</a>
                   </div>
                 </li>
               </ul>
@@ -51,7 +51,7 @@
         <div class="row">
           <div class="col-3">
             <h2>Clases</h2>
-            <ul class="list-group">
+            <ul id="clases" class="list-group">
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 Diseño de Aplicaciones y Servicios Web
                 <span class="badge badge-primary badge-pill btn btn-info" data-toggle="modal" data-target="#verActividades">14</span>
@@ -66,7 +66,7 @@
               </li>
             </ul>
             <div class="text-center">
-              <button id="nuevaMateria" type="button" class="btn btn-light" data-toggle="modal" data-target="#modalRegistrarse">
+              <button id="nuevaMateria" type="button" class="btn btn-light" data-toggle="modal" data-target="#modalNuevaMateria">
                 <i class="fas fa-plus"></i>
               </button>
             </div>
@@ -91,6 +91,19 @@
                 </ul>
               </div>
             </div>
+            <div class="d-flex justify-content-center">
+              <div class="card center" style="width: 18rem;">
+                <div class="card-header text-center">
+                  Apellido
+                  <button id="editarApellido" type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEditarApellido">
+                    <i class="far fa-edit"></i>
+                  </button>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li id="apellido" class="list-group-item">Sutano</li>
+                </ul>
+              </div>
+            </div>  
             <div class="d-flex justify-content-center">
               <div class="card" style="width: 18rem;">
                 <div class="card-header text-center">
@@ -140,6 +153,32 @@
         </div>
       </div>
     </div>
+
+    <!-- ModalEditarApellido-->
+    <div class="modal" id="modalEditarApellido" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Editar apellido</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="far fa-user"></i></span>
+                </div>
+                <input id="apellidoNuevo" type="text" class="form-control" placeholder="Apellido" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="guardarApellido" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- ModalEditarCorreo-->
     <div class="modal" id="modalEditarCorreo" tabindex="-1" role="dialog">
@@ -270,8 +309,8 @@
     </div>
 
 
-    <!-- ModalRegistrarse -->
-    <div class="modal fade" id="modalRegistrarse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- ModalNuevaMateria -->
+    <div class="modal fade" id="modalNuevaMateria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -285,32 +324,50 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Materia</span>
               </div>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input  id="nombreMateria" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Profesor</span>
+              </div>
+              <input id="nombreProfesor" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Correo del profesor</span>
+              </div>
+              <input id="correoProfesor" type="email" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Salón</span>
+                </div>
+                <input id="salon" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              </div>
             <div class="text-center">
               <p>Horario <i class="far fa-calendar-alt"></i></p>
               <div class="d-flex justify-content-between">
                 <div>
                   <div class="form-check d-flex justify-content-start">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="radio" value="07 - 09" id="defaultCheck1" name="hora" checked>
                     <label class="form-check-label" for="defaultCheck1">
                       7 - 9
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="radio" value="09 - 11" id="defaultCheck1" name="hora">
                     <label class="form-check-label" for="defaultCheck1">
                       9 - 11
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="radio" value="11 - 13" id="defaultCheck1" name="hora">
                     <label class="form-check-label" for="defaultCheck1">
                       11 - 13
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="radio" value="13 - 15" id="defaultCheck1" name="hora">
                     <label class="form-check-label" for="defaultCheck1">
                       13 - 15
                     </label>
@@ -319,25 +376,25 @@
 
                 <div>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="radio" value="14 - 16" id="defaultCheck1" name="hora">
                     <label class="form-check-label" for="defaultCheck1">
                       14 - 16
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="radio" value="16 - 18" id="defaultCheck1" name="hora">
                     <label class="form-check-label" for="defaultCheck1">
                       16 - 18
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="radio" value="18 - 20" id="defaultCheck1" name="hora">
                     <label class="form-check-label" for="defaultCheck1">
                       18 - 20
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="radio" value="20 - 22" id="defaultCheck1" name="hora">
                     <label class="form-check-label" for="defaultCheck1">
                       20 - 22
                     </label>
@@ -348,34 +405,34 @@
             <hr>
             <div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Lunes">
                 <label class="form-check-label" for="inlineCheckbox1">LUNES</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">MARTES</label>
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Martes">
+                <label class="form-check-label" for="inlineCheckbox2">MARTES</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">MIÉRCOLES</label>
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Miercoles">
+                <label class="form-check-label" for="inlineCheckbox3">MIÉRCOLES</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">JUEVES</label>
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Jueves">
+                <label class="form-check-label" for="inlineCheckbox4">JUEVES</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">VIERNES</label>
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="viernes">
+                <label class="form-check-label" for="inlineCheckbox5">VIERNES</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">SÁBADO</label>
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="Sabado">
+                <label class="form-check-label" for="inlineCheckbox6">SÁBADO</label>
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button id="guardarMateria" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -386,6 +443,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2b9e5f253e.js" crossorigin="anonymous"></script>
-    <script src="editInfo.js"></script>
+    <script src="user.js"></script>
   </body>
 </html>
