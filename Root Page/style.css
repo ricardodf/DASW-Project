@@ -1,0 +1,15 @@
+h1, h2 {
+  text-align: center;
+}
+
+#nuevaMateria {
+  margin-top: 5px;
+}
+
+.card {
+  margin-top: 50px;
+}
+
+p.card-text {
+  text-align: justify;
+}
