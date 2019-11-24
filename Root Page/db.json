@@ -5,47 +5,7 @@
       "nombre": "admin",
       "apellido": "admin",
       "correo": "admin@admin.com",
-      "password": "admin"
-    },
-    {
-      "id": 2,
-      "nombre": "a",
-      "apellido": "a",
-      "correo": "a@a.com",
-      "password": "a"
-    },
-    {
-      "nombre": "Cc",
-      "apellido": "D",
-      "correo": "C@C.com",
-      "password": "C",
-      "id": 3
-    },
-    {
-      "nombre": "CcDGNALKGE",
-      "apellido": "DVKAMEV",
-      "correo": "a@ass.com",
-      "password": "a",
-      "id": 4
-    },
-    {
-      "nombre": "CcDGNALKGE",
-      "apellido": "DVKAMEV",
-      "correo": "a@asss.com",
-      "password": "jnadskg",
-      "id": 5
-    },
-    {
-      "nombre": "Omar",
-      "apellido": "Cano",
-      "correo": "omartian21@gmail.com",
-      "password": "omar",
-      "id": 6
-    }
-  ],
-  "materias": [
-    {
-      "idMateriasUsuario": 1,
+      "password": "admin",
       "listaMaterias": [
         {
           "idMateria": "EA",
@@ -85,12 +45,7 @@
             }
           ]
         }
-      ]
-    }
-  ],
-  "examenes": [
-    {
-      "idExamenesUsuario": 1,
+      ],
       "listaExamen": [
         {
           "idExamen": 1,
@@ -106,12 +61,7 @@
           },
           "correoMaestro": "peredo@iteso.mx"
         }
-      ]
-    }
-  ],
-  "tareas": [
-    {
-      "idTareasUsuario": 1,
+      ],
       "listaTareas": [
         {
           "idTarea": 1,
@@ -140,6 +90,19 @@
           }
         }
       ]
+    },
+    {
+      "id": 2,
+      "nombre": "A",
+      "apellido": "A",
+      "correo": "A@A.com",
+      "password": "A",
+      "listaMaterias": [],
+      "listaExamenes": [],
+      "listaTareas": []
     }
-  ]
+  ],
+  "currentSession": {
+    "sessionID": 2
+  }
 }
