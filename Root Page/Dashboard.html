@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+  </head> 
   <body style="background-image: linear-gradient(to right, #8baaaa 0%, #ae8b9c 100%);" >
     <div class="container-fluid">
         <div class="row">
@@ -28,9 +28,9 @@
                         <ul class="navbar-nav ml-md-auto">
                             
                             <li class="nav-item dropdown">
-                                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Omar Pérez</a>
+                                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Omar Cano</a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                     <a class="dropdown-item" href="./configuración.html">Configuración</a> <a class="dropdown-item" href="./user.html">Mi perfil</a> <a class="dropdown-item" href="#">Ayuda</a>
+                                      <a class="dropdown-item" href="./user.html">Mi perfil</a> 
                                     <div class="dropdown-divider">
                                     </div> <a class="dropdown-item" href="./home.html">Cerrar sesión</a>
                                 </div>
@@ -70,39 +70,15 @@
                 <div><br> </div>
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                         <a class="nav-link btn btn-primary" href="#" data-toggle="modal" data-target="#modalTarea">Tareas <i class="fas fa-plus"></i></a>
+                         <a class="nav-link btn btn-primary" href="#" data-toggle="modal" data-target="#modalNuevaTarea">Tareas <i class="fas fa-plus"></i></a>
                     </li>
-                    <li>
-                        &emsp;
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link btn btn-primary" href="#" data-toggle="modal" data-target="#modalExamen">Tareas <i class="fas fa-plus"></i></a>
-                       </li>
+                    <br>
+                    <br>
+                    <br>
+
                 </ul>
-                <div id="card-269327">
-                    <div class="card">
-                        <div class="card-header">
-                             <a class="card-link" data-toggle="collapse" data-parent="#card-269327" href="#card-element-697406">Desarrollo Web</a>
-                        </div>
-                        <div id="card-element-697406" class="collapse show">
-                            <div class="card-body">
-                                Entrega de la práctica 2 <br>
-                                Realiza para cada una de las ventanas (vistas) de tu proyecto, un diseño que muestre como se verá
-                                la aplicación. La sugerencia es usar bootstrap, para no dedicar mucho al css. 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                             <a class="collapsed card-link" data-toggle="collapse" data-parent="#card-269327" href="#card-element-969911">Fundamentos de microprocesadores</a>
-                        </div>
-                        <div id="card-element-969911" class="collapse">
-                            <div class="card-body">
-                                Investigación sistema mínimo
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <ul id="tareas" class="list-group">
+                    </ul>
             </div>
             <div class="col-md-4">
                 <h3 class="text-center"  style="color: aliceblue;">
@@ -110,183 +86,150 @@
                 </h3>
                 <br>
                 <div class="col-12">
-                    <ul class="list-group">
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Diseño de Aplicaciones y Servicios Web
-                        
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Fundamentos de Sistemas Operativos
-                        
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Ecuaciones Diferenciales
-           
-                      </li>
+                    <ul id="clases" class="list-group">
+                      
                     </ul>
                     <br>
                     <div class="text-center">
-                    <button id="nuevaMateria" type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalClase">
+                      <button id="nuevaMateria" type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalNuevaMateria">
                         <i class="fas fa-plus"></i>
                       </button>
                     </div>
                   </div>
 
-                  <div class="modal fade" id="modalClase" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Registro de una nueva Clase</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text" id="inputGroup-sizing-default">Materia</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  <div class="modal fade" id="modalNuevaMateria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Registro de una nueva Clase</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
                           </div>
-                          <div class="text-center">
-                            <p>Horario <i class="far fa-calendar-alt"></i></p>
-                            <div class="d-flex justify-content-between">
-                              <div>
-                                <div class="form-check d-flex justify-content-start">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                  <label class="form-check-label" for="defaultCheck1">
-                                    7 - 9
-                                  </label>
-                                </div>
-                                <div class="form-check d-flex justify-content-start">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                  <label class="form-check-label" for="defaultCheck1">
-                                    9 - 11
-                                  </label>
-                                </div>
-                                <div class="form-check d-flex justify-content-start">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                  <label class="form-check-label" for="defaultCheck1">
-                                    11 - 13
-                                  </label>
-                                </div>
-                                <div class="form-check d-flex justify-content-start">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                  <label class="form-check-label" for="defaultCheck1">
-                                    13 - 15
-                                  </label>
-                                </div>
+                          <div class="modal-body">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Materia</span>
                               </div>
-              
-                              <div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                  <label class="form-check-label" for="defaultCheck1">
-                                    14 - 16
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                  <label class="form-check-label" for="defaultCheck1">
-                                    16 - 18
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                  <label class="form-check-label" for="defaultCheck1">
-                                    18 - 20
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                  <label class="form-check-label" for="defaultCheck1">
-                                    20 - 22
-                                  </label>
-                                </div>
+                              <input  id="nombreMateria" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Profesor</span>
                               </div>
+                              <input id="nombreProfesor" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                             </div>
-                          </div>
-                          <hr>
-                          <div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                              <label class="form-check-label" for="inlineCheckbox1">LUNES</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                              <label class="form-check-label" for="inlineCheckbox1">MARTES</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                              <label class="form-check-label" for="inlineCheckbox1">MIÉRCOLES</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                              <label class="form-check-label" for="inlineCheckbox1">JUEVES</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                              <label class="form-check-label" for="inlineCheckbox1">VIERNES</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                              <label class="form-check-label" for="inlineCheckbox1">SÁBADO</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal fade" id="modalTarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Nueva tarea</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text" id="inputGroup-sizing-default">Título</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                          </div>
-                          <div class="text-left">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect2"><p>Materia <i class="fas fa-tasks"></i></i></p></label>
-                                <select multiple class="form-control" id="exampleFormControlSelect2">
-                                  <option>Clase 1</option>
-                                  <option>Clase 2</option>
-                                  <option>Clase 3</option>
-                                  <option>Clase 4</option>
-                                  <option>Clase 5</option>
-                                </select>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Correo del profesor</span>
                               </div>
-                              <div class="form-group">
-                                    <label for="exampleFormControlTextarea1"><p>Descripción <i class="fas fa-pencil-alt"></i></p></label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              <input id="correoProfesor" type="email" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="inputGroup-sizing-default">Salón</span>
+                                </div>
+                                <input id="salon" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                              </div>
+                            <div class="text-center">
+                              <p>Horario <i class="far fa-calendar-alt"></i></p>
+                              <div class="d-flex justify-content-between">
+                                <div>
+                                  <div class="form-check d-flex justify-content-start">
+                                    <input class="form-check-input" type="radio" value="07 - 09" id="defaultCheck1" name="hora" checked>
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      7 - 9
+                                    </label>
                                   </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                          <button type="button" class="btn btn-primary">Guardar</button>
+                                  <div class="form-check d-flex justify-content-start">
+                                    <input class="form-check-input" type="radio" value="09 - 11" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      9 - 11
+                                    </label>
+                                  </div>
+                                  <div class="form-check d-flex justify-content-start">
+                                    <input class="form-check-input" type="radio" value="11 - 13" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      11 - 13
+                                    </label>
+                                  </div>
+                                  <div class="form-check d-flex justify-content-start">
+                                    <input class="form-check-input" type="radio" value="13 - 15" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      13 - 15
+                                    </label>
+                                  </div>
+                                </div>
+                
+                                <div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="14 - 16" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      14 - 16
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="16 - 18" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      16 - 18
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="18 - 20" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      18 - 20
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="20 - 22" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      20 - 22
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <hr>
+                            <div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Lunes">
+                                <label class="form-check-label" for="inlineCheckbox1">LUNES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Martes">
+                                <label class="form-check-label" for="inlineCheckbox2">MARTES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Miercoles">
+                                <label class="form-check-label" for="inlineCheckbox3">MIÉRCOLES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Jueves">
+                                <label class="form-check-label" for="inlineCheckbox4">JUEVES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="viernes">
+                                <label class="form-check-label" for="inlineCheckbox5">VIERNES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="Sabado">
+                                <label class="form-check-label" for="inlineCheckbox6">SÁBADO</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="guardarMateria" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="modal fade" id="modalExamen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalNuevaTarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Nuevo examen</h5>
+                              <h5 class="modal-title" id="exampleModalLabel">Crea una nueva tarea</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -296,40 +239,31 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text" id="inputGroup-sizing-default">Título</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <input  id="nombreTarea" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                               </div>
-                              <div class="text-left">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect2"><p>Materia <i class="fas fa-tasks"></i></i></p></label>
-                                    <select multiple class="form-control" id="exampleFormControlSelect2">
-                                      <option>Clase 1</option>
-                                      <option>Clase 2</option>
-                                      <option>Clase 3</option>
-                                      <option>Clase 4</option>
-                                      <option>Clase 5</option>
-                                    </select>
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="inputGroup-sizing-default">Fecha</span>
+                                </div>
+                                <input id="fechaTarea" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                              </div>
+                              
+                              <div class="input-group mb-3">
+                                    <span class="" id="descripcion">Descripción</span>
                                   </div>
-                                  <div class="form-group">
-                                        <label for="exampleFormControlTextarea1"><p>Descripción <i class="fas fa-pencil-alt"></i></p></label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                      </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                              <button type="button" class="btn btn-primary">Guardar</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                
-            </div>
-        </div>
-    </div>
+                                  <input id="salon" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button id="btnNuevaTarea" type="button" data-dismiss="modal" class="btn btn-primary">Guardar</button>
+                                  </div>
+                                </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2b9e5f253e.js" crossorigin="anonymous"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>
