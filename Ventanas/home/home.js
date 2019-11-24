@@ -1,22 +1,3 @@
-/*
-    Aqui estoy simulando el objeto USER con solo 4 valores básicos
-*/
-class User{
-    constructor(n, a, m, c){
-        this.nombre = n;
-        this.apellido = a;
-        this.correo = m;
-        this.contraseña = c;
-    }
-}
-
-let users = [];
-
-let admin = new User('admin', 'admin', 'admin@admin.com', 'admin');
-let user1 = new User('a', 'a', 'a@a.com', 'a');
-users.push(admin);
-users.push(user1);
-
 /***********************************************************************************************/
 /************************************     LOGIN       ******************************************/
 let loginForm = document.querySelector('#loginForm').children[0];
@@ -24,48 +5,108 @@ let btnLogin = document.querySelector('.submitLogin > button');
 
 btnLogin.addEventListener('click', () =>{
     event.preventDefault();
-    if(checkLogin(loginForm[0].value, loginForm[1].value)){
-        window.location.href = "dashboard.html"; // AQUI PONGAN LA URL DEL DASHBOARD
-    }
-    else
-        alert('ERROR: Ingrese un correo/contraseña válido');
+    getUser(loginForm[0].value, loginForm[1].value);
 });
 
-function checkLogin(correo, contraseña){
-    var flag = false;
-    users.forEach((user) => {
-        if(userExists(correo) && user.contraseña == contraseña)
-            flag = true;
-    });
-    return flag;
+function getUser(correo, password){
+    var xhr = new XMLHttpRequest();
+    var url = `http://localhost:3000/users?correo=${correo}&password=${password}`;
+    xhr.open('GET', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
+    xhr.onload = function(){
+        if(xhr.status == 200 && xhr.responseText != "[]"){
+            currentUser = JSON.parse(xhr.responseText);
+            //window.location.href = "dashboard.html"; // AQUI PONGAN LA URL DEL DASHBOARD
+        }
+        else{
+            alert('ERROR: El login no es correcto');
+        }
+    }
 }
+
 /*************************************************************************************************/
 /************************************     REGISTRO      ******************************************/
 
-let regForm = document.querySelector('.registro');
-let btnSubmitReg = document.querySelector('.registro')[5];
+let regForm = document.querySelector('#regForm');
+let regInputs = regForm.querySelectorAll('input');
+let btnRegConfirmar = document.querySelector('#btnRegConfirmar');
+
+btnRegConfirmar.disabled = true;
 
 regForm.addEventListener('change', () => {
-    regForm[5].disabled = true;
-    for(let i=0; i<4; i++){
-        if(regForm[i].value == "")
-            return;
+    btnRegConfirmar.disabled = true;
+    var flag = true;
+    regInputs.forEach((input) => {
+        if(input.value == "")
+            flag = false;
+    });
+    if(validateEmail(regInputs[2].value) && flag)
+        btnRegConfirmar.disabled = false;
+});
+
+btnRegConfirmar.addEventListener('click', () => {
+    event.preventDefault();
+
+    var xhr = new XMLHttpRequest();
+    var url = `http://localhost:3000/users?correo=${regInputs[2].value}`;
+    xhr.open('GET', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
+    xhr.onload = function(){
+        if(xhr.responseText == "[]"){
+            var newId = getIdNewUser();
+            let newUser = {
+                "id": newId,
+                "nombre": regInputs[0].value,
+                "apellido": regInputs[1].value,
+                "correo": regInputs[2].value,
+                "password": regInputs[3].value
+            };
+            console.log('ok');
+            registerNewUser(newUser);
+            alert('Usuario Registrado');
+            // <-- AQUI RUTA AL DASHBOARD!!
+        }
+        else{
+            alert('Usuario Inválido');
+        }
     }
-    if(validateEmail(regForm[2].value) && !userExists(regForm[2].value) && regForm[4].value == 'on')
-        regForm[5].disabled = false;
 });
 
-regForm[5].addEventListener('click', () => {
-    let newUser = new User(
-        regForm[0].value,
-        regForm[1].value,
-        regForm[2].value,
-        regForm[3].value
-    );
-    users.push(newUser);                         // NUEVO USUARIO A REGISTRAR (METODOD POST) ?
-    window.location.href = "dashboard.html";    // AL DASHBOARD O PAG. DEL USUARIO
-});
-
+function registerNewUser(user){
+    var xhr = new XMLHttpRequest();
+    var url = "http://localhost:3000/users";
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send([JSON.stringify(user)]);
+    xhr.onload = function(){
+        if(xhr.status == 201){
+            alert('Usuario registrado');
+        }
+        else
+            alert(xhr.status+': '+xhr.statusText);
+    }
+}
+function getIdNewUser(){
+    var newId;
+    var xhr = new XMLHttpRequest();
+    var url = `http://localhost:3000/users`;
+    xhr.open('GET', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
+    xhr.onload = function(){
+        if(xhr.status == 200){
+            newId = JSON.parse(xhr.responseText).length;
+            return newId+1;
+        }
+        else{
+            alert('Error: '+JSON.parse(xhr.responseText));
+            return -1;
+        }
+    }
+    
+}
 /*************************************************************************************************/
 /************************************     ENVIAR CORREO    ***************************************/
 
@@ -92,12 +133,4 @@ function sendMail() {
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-}
-function userExists(correo){
-    var flag = false;
-    users.forEach((user) => {
-        if(user.correo == correo)
-            flag = true;
-    });
-    return flag;
 }

@@ -49,9 +49,8 @@ hr {
 .registerInfo{
     text-align: center;
     position: relative;
-    
 }
 
-#submitReg{
+.submitReg{
     text-align: center;
 }

@@ -37,55 +37,52 @@
                 <div class="registerInfo">
                     <br><hr size="10px"><br>
                     <h5>¿No tienes cuenta?</h5>
-                    <div id="btnVerdeReg">
-                        <a href="#" class="btn btn-success btn-rounded btn-lg my-3" data-toggle="modal" data-target="#CuadroRegistro">Registrate</a>
+                    <br>
+                    <div class="text-center">
+                        <a href="" class="btn btn-success btn-rounded" data-toggle="modal" data-target="#modalRegisterForm">Registrate</a>
                     </div>
                 </div> 
             </div>
         </section>
 
-        <!-- FORMA REGISTRO-->
-        <div class="modal fade" id="CuadroRegistro" tabindex="-1" role="dialog" aria-labelledby="CuadroRegistrolLabel" aria-hidden="true">
+        <!-- FORMA REGISTRO -->
+        <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="CuadroRegistrolLabel">Registro</h5>
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Registro</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form class="registro">
-                            <div class="form-group">
-                                <label for="nombreUsuario">Nombre</label>
-                                <input type="text" class="form-control" id="nombreUsuario" placeholder="...">
-                            </div>
-                            <div class="form-group">
-                                <label for="apellidoUsuario">Apellidos</label>
-                                <input type="email" class="form-control" id="apellidoUsuario" placeholder="...">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Correo</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingresa un correo válido">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Contraseña</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*****">
-                            </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Acepto Terminos y Condiciones</label>
-                            </div>
-                            <hr><br>
-                            <div id="submitReg">
-                                <button type="submit" class="btn btn-primary" disabled>Confirmar</button>
-                            </div>
-                        </form>
+                    <div class="modal-body mx-3" id="regForm">
+                        <div class="md-form mb-2">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <input type="text" id="nombreReg" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="nombreReg">Nombre</label>
+                        </div>
+                        <div class="md-form mb-2">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <input type="text" id="apellidoReg" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="apellidoReg">Apellido</label>
+                        </div>
+                        <div class="md-form mb-2">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <input type="email" id="correoReg" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="correoReg">Correo</label>
+                        </div>
+                        <div class="md-form mb-2">
+                            <i class="fas fa-lock prefix grey-text"></i>
+                            <input type="password" id="passwordReg" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="passwordReg">Contraseña</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-primary" id="btnRegConfirmar">Confirmar</button>
                     </div>
                 </div>
             </div>
         </div>
-        
 
         <!-- Barra Inferior -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
@@ -178,6 +175,7 @@
         </div>
         
         <script src="home.js"></script>
+        <script src="currentUser.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
