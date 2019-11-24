@@ -3,6 +3,8 @@
 let loginForm = document.querySelector('#loginForm').children[0];
 let btnLogin = document.querySelector('.submitLogin > button');
 
+let newId;
+
 btnLogin.addEventListener('click', () =>{
     event.preventDefault();
     getUser(loginForm[0].value, loginForm[1].value);
@@ -16,8 +18,27 @@ function getUser(correo, password){
     xhr.send();
     xhr.onload = function(){
         if(xhr.status == 200 && xhr.responseText != "[]"){
-            currentUser = JSON.parse(xhr.responseText);
-            window.location.href = "./Dashboard.html"; // AQUI PONGAN LA URL DEL DASHBOARD
+            var info = JSON.parse(xhr.responseText);
+            loadSession(info[0].id);
+        }
+        else{
+            alert('ERROR: El login no es correcto');
+        }
+    }
+}
+
+function loadSession(id){
+    userID = {
+        "sessionID": id
+    };
+    var xhr = new XMLHttpRequest();
+    var url = `http://localhost:3000/currentSession`;
+    xhr.open('PUT', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(userID));
+    xhr.onload = function(){
+        if(xhr.status == 200){
+            window.location.href = "./Dashboard.html";
         }
         else{
             alert('ERROR: El login no es correcto');
@@ -41,8 +62,11 @@ regForm.addEventListener('change', () => {
         if(input.value == "")
             flag = false;
     });
-    if(validateEmail(regInputs[2].value) && flag)
+    if(validateEmail(regInputs[2].value) && flag){
+        getIdNewUser();
         btnRegConfirmar.disabled = false;
+    }
+        
 });
 
 btnRegConfirmar.addEventListener('click', () => {
@@ -55,18 +79,18 @@ btnRegConfirmar.addEventListener('click', () => {
     xhr.send();
     xhr.onload = function(){
         if(xhr.responseText == "[]"){
-            var newId = getIdNewUser();
             let newUser = {
                 "id": newId,
                 "nombre": regInputs[0].value,
                 "apellido": regInputs[1].value,
                 "correo": regInputs[2].value,
-                "password": regInputs[3].value
+                "password": regInputs[3].value,
+                "listaMaterias": [],
+                "listaExamenes": [],
+                "listaTareas": []
             };
-            console.log('ok');
             registerNewUser(newUser);
             alert('Usuario Registrado');
-            // <-- AQUI RUTA AL DASHBOARD!!
         }
         else{
             alert('Usuario Inválido');
@@ -88,8 +112,8 @@ function registerNewUser(user){
             alert(xhr.status+': '+xhr.statusText);
     }
 }
+
 function getIdNewUser(){
-    var newId;
     var xhr = new XMLHttpRequest();
     var url = `http://localhost:3000/users`;
     xhr.open('GET', url);
@@ -97,12 +121,10 @@ function getIdNewUser(){
     xhr.send();
     xhr.onload = function(){
         if(xhr.status == 200){
-            newId = JSON.parse(xhr.responseText).length;
-            return newId+1;
+            newId = JSON.parse(xhr.responseText).length+1;
         }
         else{
             alert('Error: '+JSON.parse(xhr.responseText));
-            return -1;
         }
     }
     
