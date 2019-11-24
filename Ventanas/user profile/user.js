@@ -144,10 +144,9 @@ btnNuevaMateria.addEventListener("click", function(event) {
 
         // Agregar a la lista
         nuevaClase = document.createElement("li");
-        nuevaClase.innerHTML = nombreMateria.value + "<span class=\"badge badge-primary badge-pill btn btn-info\" data-toggle=\"modal\" data-target=\"#verActividades\">0</span>";
+        nuevaClase.innerHTML = nombreMateria.value + "<span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span>";
         nuevaClase.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
         listaDeMaterias.append(nuevaClase);
-
 
         console.log(materia); // dbug
     } else {
@@ -168,4 +167,10 @@ btnNuevaMateria.addEventListener("click", function(event) {
     profesorIsValid = 0;
     correoProfesorIsValid = 0;
     salonIsValid = 0;
+});
+
+
+$('#clases').on("click",".remover_campo",function(e) {
+    e.preventDefault();
+    $(this).parent('li').remove();
 });
