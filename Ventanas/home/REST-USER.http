@@ -1,0 +1,34 @@
+
+### Tomar todos los usuarios
+GET http://localhost:3000/users
+
+### Tomar un solo usuario
+GET http://localhost:3000/users?correo=admin@admin.com
+Content-Type: application/json
+
+### Registrar usuario
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id": 2,
+    "nombre": "a",
+    "apellido": "a",
+    "correo": "a@a.com",
+    "password": "a"
+}
+
+### Actualizar el usuario con id=2
+PUT http://localhost:3000/users/2
+Content-Type: application/json
+
+{
+    "id": 2,
+    "nombre": "bb",
+    "apellido": "bb",
+    "correo": "a@a.com",
+    "password": "a"
+}
+
+### Eliminar usuario con id=2
+DELETE http://localhost:3000/users/4

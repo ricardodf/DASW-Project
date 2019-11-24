@@ -1,0 +1,138 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nombre": "admin",
+      "apellido": "admin",
+      "correo": "admin@admin.com",
+      "password": "admin"
+    },
+    {
+      "id": 2,
+      "nombre": "a",
+      "apellido": "a",
+      "correo": "a@a.com",
+      "password": "a"
+    },
+    {
+      "nombre": "Cc",
+      "apellido": "D",
+      "correo": "C@C.com",
+      "password": "C",
+      "id": 3
+    },
+    {
+      "nombre": "CcDGNALKGE",
+      "apellido": "DVKAMEV",
+      "correo": "a@ass.com",
+      "password": "a",
+      "id": 4
+    },
+    {
+      "nombre": "CcDGNALKGE",
+      "apellido": "DVKAMEV",
+      "correo": "a@asss.com",
+      "password": "jnadskg",
+      "id": 5
+    }
+  ],
+  "materias": [
+    {
+      "idMateriasUsuario": 1,
+      "listaMaterias": [
+        {
+          "idMateria": "EA",
+          "titulo": "Estrategias Algorítmicas",
+          "maestro": "Hugo Ivan Piza",
+          "correoMaestro": "piza@iteso.mx",
+          "salon": "T201",
+          "Horario": [
+            {
+              "dia": "Martes",
+              "horaInicio": 11,
+              "horaFInal": 1
+            },
+            {
+              "dia": "Jueves",
+              "horaInicio": 11,
+              "horaFInal": 1
+            }
+          ]
+        },
+        {
+          "idMateria": "MP",
+          "titulo": "Microprocesadores",
+          "maestro": "Mario Alberto Peredo",
+          "correoMaestro": "peredo@iteso.mx",
+          "salon": "MEZZANINE-1",
+          "Horario": [
+            {
+              "dia": "Lunes",
+              "horaInicio": 7,
+              "horaFinal": 9
+            },
+            {
+              "dia": "Jueves",
+              "horaInicio": 7,
+              "horaFinal": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "examenes": [
+    {
+      "idExamenesUsuario": 1,
+      "listaExamen": [
+        {
+          "idExamen": 1,
+          "materia": "Microprocesadores",
+          "duracion": 2,
+          "salon": "MEZZANINE-1",
+          "maestro": "Mario Alberto Peredo",
+          "fecha": {
+            "dia": 25,
+            "mes": "Noviembre",
+            "año": 2019,
+            "horaInicio": 7
+          },
+          "correoMaestro": "peredo@iteso.mx"
+        }
+      ]
+    }
+  ],
+  "tareas": [
+    {
+      "idTareasUsuario": 1,
+      "listaTareas": [
+        {
+          "idTarea": 1,
+          "titulo": "Tarea 5",
+          "descripción": "Arboles B",
+          "materia": "Estrategias Algoritmicas",
+          "fechaEntrega": {
+            "dia": 28,
+            "mes": "Noviembre",
+            "año": 2019,
+            "hora": 23,
+            "minutos": 59
+          }
+        },
+        {
+          "idTarea": 2,
+          "titulo": "Proyecto",
+          "descripción": "Cosas Random",
+          "materia": "Estrategias Algoritmicas",
+          "fechaEntrega": {
+            "dia": 3,
+            "mes": "Diciembre",
+            "año": 2019,
+            "hora": 12,
+            "minutos": 0
+          }
+        }
+      ]
+    }
+  ]
+}
