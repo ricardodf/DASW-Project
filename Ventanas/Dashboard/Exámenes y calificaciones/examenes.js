@@ -86,11 +86,8 @@ btnGuardarExamen.addEventListener("click", function(event) {
         nombreMateria = materia.value;
         nuevoExamen = document.createElement("li");
         index = document.querySelectorAll("#examenes > li").length;
-        htmlText = "<a class=\"nav-link\" href=\"#\">" + (index + 1) + ". Examen 1 " + nombreMateria + "</a>";
+        htmlText = "<a class=\"nav-link\" href=\"#\">" + (index + 1) + ". Examen 1 " + nombreMateria + "<span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span></a>";
 
-        // <li class="nav-item">
-		// <a class="nav-link active" href="#">1. Examen 3 Desarrollo Web</a>
-		// </li>
         nuevoExamen.innerHTML = htmlText;
         nuevoExamen.classList.add("nav-item");
         listaDeExamenes.append(nuevoExamen);
@@ -119,4 +116,11 @@ btnGuardarExamen.addEventListener("click", function(event) {
     profesorIsValid = 0;
     correoProfesorIsValid = 0;
     materiaIsValid = 0;
+});
+
+
+
+$('#examenes').on("click",".remover_campo",function(e) {
+    e.preventDefault();
+    $(this).parent('a').remove();
 });
