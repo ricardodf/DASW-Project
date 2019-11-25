@@ -8,7 +8,7 @@
       "password": "admin",
       "listaMaterias": [
         {
-          "idMateria": "EA",
+          "idMateria": 1,
           "titulo": "Estrategias Algorítmicas",
           "maestro": "Hugo Ivan Piza",
           "correoMaestro": "piza@iteso.mx",
@@ -27,7 +27,7 @@
           ]
         },
         {
-          "idMateria": "MP",
+          "idMateria": 1,
           "titulo": "Microprocesadores",
           "maestro": "Mario Alberto Peredo",
           "correoMaestro": "peredo@iteso.mx",
@@ -103,6 +103,6 @@
     }
   ],
   "currentSession": {
-    "sessionID": 2
+    "sessionID": 1
   }
 }
