@@ -22,7 +22,7 @@
             {
               "dia": "Jueves",
               "horaInicio": 11,
-              "horaFInal": 1
+              "horaFinal": 1
             }
           ]
         },
@@ -103,6 +103,6 @@
     }
   ],
   "currentSession": {
-    "sessionID": 1
+    "sessionID": 2
   }
 }
