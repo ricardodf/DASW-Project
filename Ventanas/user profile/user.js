@@ -174,3 +174,77 @@ $('#clases').on("click",".remover_campo",function(e) {
     e.preventDefault();
     $(this).parent('li').remove();
 });
+
+
+
+
+let horaEditar = document.getElementsByName("horaEditar");
+//seleccionar todos los checkbox que estan adentro de un div con id = ModalNuevaMateria
+let diasEditar = document.querySelectorAll("input[type=\"checkbox\"]");
+
+
+
+let btnEditarMateria = document.getElementById("guardarEditarMateria");
+let nombreEditarMateria = document.getElementById("nombreEditarMateria");
+let nombreEditarProfesor = document.getElementById("nombreEditarProfesor");
+let correoEditarProfesor = document.getElementById("correoEditarProfesor");
+let salonEditar = document.getElementById("salonEditar");
+
+// Flags for validations
+let materiaEditarIsValid = 0;
+let profesorEditarIsValid = 0;
+let correoEditarProfesorIsValid = 0;
+let salonEditarIsValid = 0;
+
+nombreEditarMateria.addEventListener("keyup", function(event) {
+    if(nombreEditarMateria.value != "")
+        materiaEditarIsValid = 1;
+    else
+        materiaEditarIsValid = 0;
+});
+
+nombreEditarProfesor.addEventListener("keyup", function(event) {
+    if(nombreEditarProfesor.value != "")
+        profesorEditarIsValid = 1;
+    else
+        profesorEditarIsValid = 0;
+});
+
+correoEditarProfesor.addEventListener("keyup", function(event) {
+    if(validar_email(correoEditarProfesor.value))
+        correoEditarProfesorIsValid = 1;
+    else
+        correoEditarProfesorIsValid = 0;
+});
+
+salonEditar.addEventListener("keyup", function(event) {
+    if(salonEditar.value != "")
+        salonEditarIsValid = 1;
+    else
+        salonEditarIsValid = 0;
+});
+
+
+btnEditarMateria.addEventListener("click", function(event) {
+    if(materiaEditarIsValid && profesorEditarIsValid && correoEditarProfesorIsValid && salonEditarIsValid) {
+
+    }  
+});
+
+let seleccionado;
+
+$('#clases').on("click",".editar_campo",function(e) {
+    e.preventDefault();
+    $('#modalEditarMateria').modal('show'); // abrir
+    seleccionado = e.currentTarget.offsetParent;
+    //$('#myModalExito').modal('hide'); // cerrar
+    //$(this).parent('li').remove();
+});
+
+btnEditarMateria.addEventListener("click", function(event) {
+    if(materiaEditarIsValid && profesorEditarIsValid && correoEditarProfesorIsValid && salonEditarIsValid) {
+        seleccionado.innerHTML = nombreEditarMateria.value + "<span class=\"btn btn-light editar_campo\"><i class=\"far fa-edit\"></i></span><span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span>";; 
+    } else {
+        alert("Información no válida.");
+    }
+});
