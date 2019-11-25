@@ -1,10 +1,100 @@
 "use strict";
-// Editar el correo
+let tareaTemp = {
+    "idTarea": -1,
+    "titulo": "",
+    "descripcion": "",
+    "fechaEntrega": ""
+};
+
+let materiaTemp = {
+    "idMateria": -1,
+    "titulo": "",
+    "maestro": "",
+    "correoMaestro": "",
+    "salon": "",
+    "horario": {
+        "dia": {
+              "dia1" : "",
+              "dia2" : "",
+              "dia3" : ""
+            },
+    },
+    "horaInicio": ""
+    };
+
+let nombreUsuarioBarra = document.getElementById("nombreUsuarioNavBar");
+let nuevaTareaHTML;
+let nuevaMateriaHTML;
+
+window.onload = () => {
+    getSession();   // Buscamos la sesión actual
+    setTimeout(function(){
+        loadInfo(); // Cargamos info
+        setTimeout(function(){
+            nombreUsuarioBarra.innerText = info.nombre;
+            console.log(info.listaTareas.length)
+            for(let i = 0; i < info.listaTareas.length; i++){
+                nuevaTareaHTML = document.createElement("li");
+                nuevaTareaHTML.innerHTML = info.listaTareas[i].titulo + "<span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span></a>";
+                nuevaTareaHTML.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+                listaDeTareas.append(nuevaTareaHTML);
+            }
+
+            for(let i = 0; i < info.listaMaterias.length; i++){
+                nuevaMateriaHTML = document.createElement("li");
+                console.log(info.listaMaterias[i].titulo);
+                nuevaMateriaHTML.innerHTML = info.listaMaterias[i].titulo ;
+                nuevaMateriaHTML.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+                listaDeMaterias.append(nuevaMateriaHTML);
+            }
+            
+        }, 500)
+    }, 500);
+}
+
+// funciones
+function agregarEditarTarea(tarea){
+
+    tareaTemp.idTarea = info.listaTareas.length+1;
+    tareaTemp.titulo = tarea.titulo;
+    tareaTemp.descripcion = tarea.descripcion;
+    tareaTemp.fechaEntrega = tarea.fecha;
+
+    console.log(info);
+    console.log(info.listaTareas);
+
+    info.listaTareas.push(tareaTemp);
+    update(info);
+    loadInfo();
+}
+
+function agregarEditarMateria(materia){
+
+    materiaTemp.idMateria = info.listaMaterias.length+1;
+    materiaTemp.titulo = materia.titulo;
+    materiaTemp.maestro = materia.maestro;
+    materiaTemp.correoMaestro = materia.correoMaestro;
+    materiaTemp.salon = materia.salon;
+    materiaTemp.horario = "";
+
+    console.log(info);
+    console.log(info.listaMaterias);
+
+    info.listaMaterias.push(materiaTemp);
+    update(info);
+    loadInfo();
+}
 
 function validar_email(email) 
 {
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email) ? true : false;
+}
+
+function deleteTarea(){
+    info.listaTareas.splice(info.listaTareas.length -1 ,1);
+    update(info);
+    loadInfo();
 }
 
 
@@ -91,9 +181,10 @@ btnNuevaMateria.addEventListener("click", function(event) {
         nuevaClase.innerHTML = nombreMateria.value ;
         nuevaClase.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
         listaDeMaterias.append(nuevaClase);
+        agregarEditarMateria(materia);
 
 
-        console.log(materia); // dbug
+        //console.log(materia); // dbug
     } else {
         console.log(materiaIsValid);
         console.log(profesorIsValid);
@@ -122,7 +213,7 @@ let nuevaTarea;
 
 let btnNuevaTarea = document.getElementById("btnNuevaTarea");
 let nombreTarea = document.getElementById("nombreTarea");
-let fechaTarea = document.getElementById("nombreMateria");
+let fechaTarea = document.getElementById("fechaTarea");
 let descripcion = document.getElementById("descripcion");
 
 let listaDeTareas = document.getElementById("tareas");
@@ -159,9 +250,9 @@ btnNuevaTarea.addEventListener("click", function(event) {
         // Guardar toda la información en un objeto
 
         tarea.idMateria = "";
-        tarea.titulo = nombreMateria.value;
-        tarea.materia = nombreProfesor.value;
-        tarea.descripcion = correoProfesor.value;
+        tarea.titulo = nombreTarea.value;
+        tarea.fecha = fechaTarea.value;
+        tarea.descripcion = descripcion.value;
 
 
         // Agregar a la lista
@@ -169,6 +260,7 @@ btnNuevaTarea.addEventListener("click", function(event) {
         nuevaTarea.innerHTML = nombreTarea.value ;
         nuevaTarea.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
         listaDeTareas.append(nuevaTarea);
+        agregarEditarTarea(tarea);
 
 
         console.log(tarea); // dbug
@@ -187,4 +279,12 @@ btnNuevaTarea.addEventListener("click", function(event) {
     nombretareaIsValid = 0;
     fechatareaIsValid = 0;
     descripciontareaIsValid = 0;
+
+    
+});
+
+$('#tareas').on("click",".remover_campo",function(e) {
+    e.preventDefault();
+    $(this).parent('a').remove();
+    deleteTarea();
 });

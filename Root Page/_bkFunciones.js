@@ -3,56 +3,14 @@
 let session;    // ID del usuario actual
 let info = {};  // Toda la info del usuario
 
-let materiaTemp = {
-    "idMateria": -1,
-    "titulo": "",
-    "maestro": "",
-    "correoMaestro": "",
-    "salon": "",
-    "horario": {
-        "dia": "",
-        "horaInicio": -1,
-        "horaFinal": -1,
-    }
-};
-let examenTemp = {
-    "idExamen": -1,
-    "materia": "",
-    "duracion": -1,
-    "salon": "",
-    "maestro": "",
-    "correoMaestro": "",
-    "fecha": {
-        "dia": -1,
-        "mes": "",
-        "año": -1,
-        "horaInicio": -1
-    }
-};
-let tareaTemp = {
-    "idTarea": -1,
-    "titulo": "",
-    "descripción": "",
-    "materia": "",
-    "fechaEntrega": {
-        "dia": -1,
-        "mes": "",
-        "año": -1,
-        "hora": -1,
-        "minutos": -1
-    }
-};
+
+
+
 
 /***********************************************************************************************
 ******************************* CUANDO SE ABRE UNA PÁGINA *************************************/
 
 // Cuando se carga la página
-window.onload = () => {
-    getSession();   // Buscamos la sesión actual
-    setTimeout(function(){
-        loadInfo(); // Cargamos info
-    }, 300);
-}
 
 // Buscar ID de sesión del usuario
 function getSession(){
@@ -93,7 +51,7 @@ function update(newInfo){
     xhr.send([JSON.stringify(newInfo)]);
     xhr.onload = function(){
         if(xhr.status == 200)
-            alert('Usuario Actualizado');
+            alert('Registro actualizado');
         else
             alert(xhr.status+': '+xhr.statusText);
     }

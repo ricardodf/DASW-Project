@@ -13,18 +13,14 @@
           "maestro": "Hugo Ivan Piza",
           "correoMaestro": "piza@iteso.mx",
           "salon": "T201",
-          "Horario": [
-            {
-              "dia": "Martes",
-              "horaInicio": 11,
-              "horaFInal": 1
-            },
-            {
-              "dia": "Jueves",
-              "horaInicio": 11,
-              "horaFinal": 1
+          "Horario": {
+            "dia": {
+              "dia1": "",
+              "dia2": "",
+              "dia3": ""
             }
-          ]
+          },
+          "horaInicio": ""
         },
         {
           "idMateria": 1,
@@ -32,18 +28,14 @@
           "maestro": "Mario Alberto Peredo",
           "correoMaestro": "peredo@iteso.mx",
           "salon": "MEZZANINE-1",
-          "Horario": [
-            {
-              "dia": "Lunes",
-              "horaInicio": 7,
-              "horaFinal": 9
-            },
-            {
-              "dia": "Jueves",
-              "horaInicio": 7,
-              "horaFinal": 9
+          "Horario": {
+            "dia": {
+              "dia1": "",
+              "dia2": "",
+              "dia3": ""
             }
-          ]
+          },
+          "horaInicio": ""
         }
       ],
       "listaExamen": [
@@ -53,12 +45,7 @@
           "duracion": 2,
           "salon": "MEZZANINE-1",
           "maestro": "Mario Alberto Peredo",
-          "fecha": {
-            "dia": 25,
-            "mes": "Noviembre",
-            "año": 2019,
-            "horaInicio": 7
-          },
+          "fecha": "",
           "correoMaestro": "peredo@iteso.mx"
         }
       ],
@@ -67,27 +54,13 @@
           "idTarea": 1,
           "titulo": "Tarea 5",
           "descripción": "Arboles B",
-          "materia": "Estrategias Algoritmicas",
-          "fechaEntrega": {
-            "dia": 28,
-            "mes": "Noviembre",
-            "año": 2019,
-            "hora": 23,
-            "minutos": 59
-          }
+          "fechaEntrega": ""
         },
         {
           "idTarea": 2,
           "titulo": "Proyecto",
           "descripción": "Cosas Random",
-          "materia": "Estrategias Algoritmicas",
-          "fechaEntrega": {
-            "dia": 3,
-            "mes": "Diciembre",
-            "año": 2019,
-            "hora": 12,
-            "minutos": 0
-          }
+          "fechaEntrega": ""
         }
       ]
     },
@@ -100,9 +73,55 @@
       "listaMaterias": [],
       "listaExamenes": [],
       "listaTareas": []
+    },
+    {
+      "id": 3,
+      "nombre": "Omar",
+      "apellido": "Cano",
+      "correo": "omartian21@gmail.com",
+      "password": "omar",
+      "listaMaterias": [
+        {
+          "idMateria": 1,
+          "titulo": "Desarrollo Web",
+          "maestro": "Oscar Oceguera",
+          "correoMaestro": "oceguera@iteso.mx",
+          "salon": "T-101",
+          "horario": "",
+          "horaInicio": ""
+        },
+        {
+          "idMateria": 3,
+          "titulo": "Arquitectura de micros",
+          "maestro": "Mario Peredo",
+          "correoMaestro": "mperedo@iteso.mx",
+          "salon": "Mezzanine",
+          "horario": "",
+          "horaInicio": ""
+        }
+      ],
+      "listaExamen": [
+        {
+          "idExamen": 1,
+          "materia": "Fundamentos de micros",
+          "duracion": "420 minutos",
+          "salon": "Mezanine",
+          "maestro": {},
+          "correoMaestro": {},
+          "fecha": "26 de novimebre"
+        }
+      ],
+      "listaTareas": [
+        {
+          "idTarea": 1,
+          "titulo": "Tarea prueba",
+          "descripcion": "Nueva tarea",
+          "fechaEntrega": "25 de noviembre"
+        }
+      ]
     }
   ],
   "currentSession": {
-    "sessionID": 2
+    "sessionID": 3
   }
 }

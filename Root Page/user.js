@@ -1,4 +1,20 @@
 "use strict";
+
+let materiaTemp = {
+    "idMateria": -1,
+    "titulo": "",
+    "maestro": "",
+    "correoMaestro": "",
+    "salon": "",
+    "horario": {
+        "dia": {
+              "dia1" : "",
+              "dia2" : "",
+              "dia3" : ""
+            },
+    },
+    "horaInicio": ""
+    };
 ///////////// Editar información /////////////////////////
 // Editar el nombre
 let btnEditName = document.getElementById("guardarNombre");
@@ -16,6 +32,9 @@ txtName.addEventListener("change", function(event) {
 
 btnEditName.addEventListener("click", function(event) {
     nombre.innerText = txtName.value;
+    info.nombre = txtName.value
+    update(info);
+    loadInfo();
 
 });
 
@@ -35,7 +54,9 @@ txtLastName.addEventListener("change", function(event) {
 
 btnEditLastName.addEventListener("click", function(event) {
     apellido.innerText = txtLastName.value;
-
+    info.apellido = txt.txtLastName.value;
+    update(info);
+    loadInfo();
 });
 
 // Editar el correo
@@ -61,6 +82,9 @@ txtEmail.addEventListener("change", function(event) {
 
 btnEditEmail.addEventListener("click", function(event) {
     email.innerText = txtEmail.value;
+    info.correo = txtEmail.value
+    update(info);
+    loadInfo();
 });
 
 
@@ -73,6 +97,7 @@ let materia = {}; // Guardará toda la información de la materia nueva
 let dias = document.querySelectorAll("input[type=\"checkbox\"]");
 
 let nuevaClase;
+let nuevaClaseHTML;
 
 let btnNuevaMateria = document.getElementById("guardarMateria");
 let nombreMateria = document.getElementById("nombreMateria");
@@ -87,6 +112,36 @@ let materiaIsValid = 0;
 let profesorIsValid = 0;
 let correoProfesorIsValid = 0;
 let salonIsValid = 0;
+
+function editarMateria(materia){
+
+    materiaTemp.idMateria = info.listaMaterias.length+1;
+    materiaTemp.titulo = nombreEditarMateria.value;
+    materiaTemp.maestro = nombreEditarProfesor.value;
+    materiaTemp.correoMaestro = correoEditarProfesor.value;
+    materiaTemp.salon = salonEditar.value;
+    materiaTemp.horario = "";
+
+    
+    deleteMateria();
+    info.listaMaterias.push(materiaTemp);
+    update(info);
+    loadInfo();
+}
+
+function crearMateria(materia){
+
+    materiaTemp.idMateria = info.listaMaterias.length+1;
+    materiaTemp.titulo = materia.titulo;
+    materiaTemp.maestro = materia.maestro;
+    materiaTemp.correoMaestro = materia.correoMaestro;
+    materiaTemp.salon = materia.salon;
+    materiaTemp.horario = "";
+
+    info.listaMaterias.push(materiaTemp);
+    update(info);
+    loadInfo();
+}
 
 nombreMateria.addEventListener("keyup", function(event) {
     if(nombreMateria.value != "")
@@ -144,12 +199,12 @@ btnNuevaMateria.addEventListener("click", function(event) {
 
         // Agregar a la lista
         nuevaClase = document.createElement("li");
-        nuevaClase.innerHTML = nombreMateria.value + "<span class=\"badge badge-primary badge-pill btn btn-info\" data-toggle=\"modal\" data-target=\"#verActividades\">0</span>";
+        nuevaClase.innerHTML = nombreMateria.value + "<span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span>";
         nuevaClase.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
         listaDeMaterias.append(nuevaClase);
+        crearMateria(materia);
 
-
-        console.log(materia); // dbug
+        //console.log(materia); // dbug
     } else {
         console.log(materiaIsValid);
         console.log(profesorIsValid);
@@ -168,4 +223,114 @@ btnNuevaMateria.addEventListener("click", function(event) {
     profesorIsValid = 0;
     correoProfesorIsValid = 0;
     salonIsValid = 0;
+});
+
+
+$('#clases').on("click",".remover_campo",function(e) {
+    e.preventDefault();
+    $(this).parent('li').remove();
+    deleteMateria();
+});
+
+window.onload = () => {
+    getSession();   // Buscamos la sesión actual
+    setTimeout(function(){
+        loadInfo(); // Cargamos info
+        setTimeout(function(){
+            nombreUsuarioBarra.innerText = info.nombre;
+            nombre.innerText = info.nombre;
+            apellido.innerText = info.apellido;
+            email.innerText = info.correo;
+           
+
+            for(let i = 0; i < info.listaMaterias.length; i++){
+                nuevaClaseHTML = document.createElement("li");
+                console.log(info.listaMaterias[i].titulo);
+                nuevaClaseHTML.innerHTML =info.listaMaterias[i].titulo + "<span class=\"btn btn-light editar_campo\"><i class=\"far fa-edit\"></i></span><span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span>" ;
+                nuevaClaseHTML.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+                listaDeMaterias.append(nuevaClaseHTML);
+            }
+            
+        }, 500)
+    }, 500);
+}
+
+function deleteMateria(){
+    info.listaMaterias.splice(info.listaMaterias.length -1 ,1);
+    update(info);
+    loadInfo();
+}
+
+
+
+
+
+
+let horaEditar = document.getElementsByName("horaEditar");
+//seleccionar todos los checkbox que estan adentro de un div con id = ModalNuevaMateria
+let diasEditar = document.querySelectorAll("input[type=\"checkbox\"]");
+
+
+
+let btnEditarMateria = document.getElementById("guardarEditarMateria");
+let nombreEditarMateria = document.getElementById("nombreEditarMateria");
+let nombreEditarProfesor = document.getElementById("nombreEditarProfesor");
+let correoEditarProfesor = document.getElementById("correoEditarProfesor");
+let salonEditar = document.getElementById("salonEditar");
+
+// Flags for validations
+let materiaEditarIsValid = 0;
+let profesorEditarIsValid = 0;
+let correoEditarProfesorIsValid = 0;
+let salonEditarIsValid = 0;
+
+nombreEditarMateria.addEventListener("keyup", function(event) {
+    if(nombreEditarMateria.value != "")
+        materiaEditarIsValid = 1;
+    else
+        materiaEditarIsValid = 0;
+});
+
+nombreEditarProfesor.addEventListener("keyup", function(event) {
+    if(nombreEditarProfesor.value != "")
+        profesorEditarIsValid = 1;
+    else
+        profesorEditarIsValid = 0;
+});
+
+correoEditarProfesor.addEventListener("keyup", function(event) {
+    if(validar_email(correoEditarProfesor.value))
+        correoEditarProfesorIsValid = 1;
+    else
+        correoEditarProfesorIsValid = 0;
+});
+
+salonEditar.addEventListener("keyup", function(event) {
+    if(salonEditar.value != "")
+        salonEditarIsValid = 1;
+    else
+        salonEditarIsValid = 0;
+});
+
+
+btnEditarMateria.addEventListener("click", function(event) {
+    if(materiaEditarIsValid && profesorEditarIsValid && correoEditarProfesorIsValid && salonEditarIsValid) {
+        editarMateria();
+    }  
+});
+
+let seleccionado;
+
+$('#clases').on("click",".editar_campo",function(e) {
+    e.preventDefault();
+    $('#modalEditarMateria').modal('show'); // abrir
+    seleccionado = e.currentTarget.offsetParent;
+});
+
+btnEditarMateria.addEventListener("click", function(event) {
+    if(materiaEditarIsValid && profesorEditarIsValid && correoEditarProfesorIsValid && salonEditarIsValid) {
+        seleccionado.innerHTML = nombreEditarMateria.value + "<span class=\"btn btn-light editar_campo\"><i class=\"far fa-edit\"></i></span><span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span>";
+    } else {
+        alert("Información no válida.");
+    }
 });
