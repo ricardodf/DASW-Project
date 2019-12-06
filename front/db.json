@@ -1,0 +1,108 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nombre": "admin",
+      "apellido": "admin",
+      "correo": "admin@admin.com",
+      "password": "admin",
+      "listaMaterias": [
+        {
+          "idMateria": 1,
+          "titulo": "Estrategias Algorítmicas",
+          "maestro": "Hugo Ivan Piza",
+          "correoMaestro": "piza@iteso.mx",
+          "salon": "T201",
+          "Horario": [
+            {
+              "dia": "Martes",
+              "horaInicio": 11,
+              "horaFInal": 1
+            },
+            {
+              "dia": "Jueves",
+              "horaInicio": 11,
+              "horaFinal": 1
+            }
+          ]
+        },
+        {
+          "idMateria": 1,
+          "titulo": "Microprocesadores",
+          "maestro": "Mario Alberto Peredo",
+          "correoMaestro": "peredo@iteso.mx",
+          "salon": "MEZZANINE-1",
+          "Horario": [
+            {
+              "dia": "Lunes",
+              "horaInicio": 7,
+              "horaFinal": 9
+            },
+            {
+              "dia": "Jueves",
+              "horaInicio": 7,
+              "horaFinal": 9
+            }
+          ]
+        }
+      ],
+      "listaExamen": [
+        {
+          "idExamen": 1,
+          "materia": "Microprocesadores",
+          "duracion": 2,
+          "salon": "MEZZANINE-1",
+          "maestro": "Mario Alberto Peredo",
+          "fecha": {
+            "dia": 25,
+            "mes": "Noviembre",
+            "año": 2019,
+            "horaInicio": 7
+          },
+          "correoMaestro": "peredo@iteso.mx"
+        }
+      ],
+      "listaTareas": [
+        {
+          "idTarea": 1,
+          "titulo": "Tarea 5",
+          "descripción": "Arboles B",
+          "materia": "Estrategias Algoritmicas",
+          "fechaEntrega": {
+            "dia": 28,
+            "mes": "Noviembre",
+            "año": 2019,
+            "hora": 23,
+            "minutos": 59
+          }
+        },
+        {
+          "idTarea": 2,
+          "titulo": "Proyecto",
+          "descripción": "Cosas Random",
+          "materia": "Estrategias Algoritmicas",
+          "fechaEntrega": {
+            "dia": 3,
+            "mes": "Diciembre",
+            "año": 2019,
+            "hora": 12,
+            "minutos": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "A",
+      "apellido": "A",
+      "correo": "A@A.com",
+      "password": "A",
+      "listaMaterias": [],
+      "listaExamenes": [],
+      "listaTareas": []
+    }
+  ],
+  "currentSession": {
+    "sessionID": 1
+  }
+}

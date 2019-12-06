@@ -1,0 +1,190 @@
+"use strict";
+// Editar el correo
+
+function validar_email(email) 
+{
+    var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email) ? true : false;
+}
+
+
+/////////// Nueva materia //////////////////
+
+let hora = document.getElementsByName("hora");
+let materia = {}; // Guardará toda la información de la materia nueva
+
+//seleccionar todos los checkbox que estan adentro de un div con id = ModalNuevaMateria
+let dias = document.querySelectorAll("input[type=\"checkbox\"]");
+
+let nuevaClase;
+
+let btnNuevaMateria = document.getElementById("guardarMateria");
+let nombreMateria = document.getElementById("nombreMateria");
+let nombreProfesor = document.getElementById("nombreProfesor");
+let correoProfesor = document.getElementById("correoProfesor");
+let salon = document.getElementById("salon");
+
+let listaDeMaterias = document.getElementById("clases");
+
+// Flags for validations
+let materiaIsValid = 0;
+let profesorIsValid = 0;
+let correoProfesorIsValid = 0;
+let salonIsValid = 0;
+
+nombreMateria.addEventListener("keyup", function(event) {
+    if(nombreMateria.value != "")
+        materiaIsValid = 1;
+    else
+        materiaIsValid = 0;
+});
+
+nombreProfesor.addEventListener("keyup", function(event) {
+    if(nombreProfesor.value != "")
+        profesorIsValid = 1;
+    else
+        profesorIsValid = 0;
+});
+
+correoProfesor.addEventListener("keyup", function(event) {
+    if(validar_email(correoProfesor.value))
+        correoProfesorIsValid = 1;
+    else
+        correoProfesorIsValid = 0;
+});
+
+salon.addEventListener("keyup", function(event) {
+    if(salon.value != "")
+        salonIsValid = 1;
+    else
+        salonIsValid = 0;
+});
+
+btnNuevaMateria.addEventListener("click", function(event) {
+    //Validar información
+    if(materiaIsValid && profesorIsValid && correoProfesorIsValid && salonIsValid) {
+        // Guardar toda la información en un objeto
+
+        materia.idMateria = "";
+        materia.titulo = nombreMateria.value;
+        materia.maestro = nombreProfesor.value;
+        materia.correoMaestro = correoProfesor.value;
+        materia.salon = salon.value;
+        materia.Horario = [];
+
+        for(let i = 0; i < hora.length; i++) {
+            if(hora[i].checked) {
+                for(let j = 0; j < dias.length; j++) {
+                    if(dias[j].checked) {
+                        materia.Horario.push({
+                                                "dia": dias[j].value,
+                                                "horaInicio": hora[i].value.substring(0, 2),
+                                                "horaFinal": hora[i].value.substring(5, 7)
+                                             });
+                    }
+                }
+            }
+        }
+
+        // Agregar a la lista
+        nuevaClase = document.createElement("li");
+        nuevaClase.innerHTML = nombreMateria.value ;
+        nuevaClase.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+        listaDeMaterias.append(nuevaClase);
+
+
+        console.log(materia); // dbug
+    } else {
+        console.log(materiaIsValid);
+        console.log(profesorIsValid);
+        console.log(correoProfesorIsValid);
+        console.log(salonIsValid);
+        alert("Información no válida.");
+    }
+
+    // Limpiar formulario
+    nombreMateria.value = "";
+    nombreProfesor.value = "";
+    correoProfesor.value = "";
+    salon.value = "";
+
+    materiaIsValid = 0;
+    profesorIsValid = 0;
+    correoProfesorIsValid = 0;
+    salonIsValid = 0;
+});
+
+
+/////////// Nueva tarea //////////////////
+let tarea = {}; // Guardará toda la información de la tarea nueva
+
+let nuevaTarea;
+
+let btnNuevaTarea = document.getElementById("btnNuevaTarea");
+let nombreTarea = document.getElementById("nombreTarea");
+let fechaTarea = document.getElementById("nombreMateria");
+let descripcion = document.getElementById("descripcion");
+
+let listaDeTareas = document.getElementById("tareas");
+
+// Flags for validations
+let nombretareaIsValid = 0;
+let fechatareaIsValid = 0;
+let descripciontareaIsValid = 0;
+
+
+nombreTarea.addEventListener("keyup", function(event) {
+    if(nombreTarea.value != "")
+    nombretareaIsValid = 1;
+    else
+    nombretareaIsValid = 0;
+});
+fechaTarea.addEventListener("keyup", function(event) {
+    if(fechaTarea.value != "")
+    fechatareaIsValid = 1;
+    else
+    fechatareaIsValid = 0;
+});
+descripcion.addEventListener("keyup", function(event) {
+    if(descripcion.value != "")
+    descripciontareaIsValid = 1;
+    else
+    descripciontareaIsValid = 0;
+});
+
+
+btnNuevaTarea.addEventListener("click", function(event) {
+    //Validar información
+    if(nombretareaIsValid) {
+        // Guardar toda la información en un objeto
+
+        tarea.idMateria = "";
+        tarea.titulo = nombreMateria.value;
+        tarea.materia = nombreProfesor.value;
+        tarea.descripcion = correoProfesor.value;
+
+
+        // Agregar a la lista
+        nuevaTarea = document.createElement("li");
+        nuevaTarea.innerHTML = nombreTarea.value ;
+        nuevaTarea.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+        listaDeTareas.append(nuevaTarea);
+
+
+        console.log(tarea); // dbug
+    } else {
+        console.log(nombretareaIsValid);
+        console.log(fechatareaIsValid);
+        console.log(descripciontareaIsValid);
+        alert("Información no válida.");
+    }
+
+    // Limpiar formulario
+    nombreTarea.value = "";
+    fechaTarea.value = "";
+    descripcion.value = "";
+
+    nombretareaIsValid = 0;
+    fechatareaIsValid = 0;
+    descripciontareaIsValid = 0;
+});

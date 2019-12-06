@@ -1,0 +1,6 @@
+{
+    "dbuser":"admin",
+    "dbpsw":"admin",
+    "dbcluster": "Cluster0",
+    "dbname": "mydb"
+}
