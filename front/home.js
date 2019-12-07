@@ -86,11 +86,10 @@ btnRegConfirmar.addEventListener('click', () => {
                 "correo": regInputs[2].value,
                 "password": regInputs[3].value,
                 "listaMaterias": [],
-                "listaExamenes": [],
+                "listaExamen": [],
                 "listaTareas": []
             };
             registerNewUser(newUser);
-            alert('Usuario Registrado');
         }
         else{
             alert('Usuario Inválido');
@@ -126,8 +125,7 @@ function getIdNewUser(){
         else{
             alert('Error: '+JSON.parse(xhr.responseText));
         }
-    }
-    
+    }   
 }
 /*************************************************************************************************/
 /************************************     ENVIAR CORREO    ***************************************/

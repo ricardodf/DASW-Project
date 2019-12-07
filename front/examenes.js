@@ -5,8 +5,18 @@ let duracion = document.getElementById("duracion");
 let nombreProfesor = document.getElementById("maestro");
 let correoProfesor = document.getElementById("correo");
 let materia = document.getElementById("materia");
+let nuevoExamenHTML;
+let infoDeXams = document.getElementById("infoExams");
 
-
+let examenTemp = {
+    "idExamen": -1,
+    "materia": "",
+    "duracion": -1,
+    "salon": "",
+    "maestro": "",
+    "correoMaestro": "",
+    "fecha": ""
+};
 
 function validar_email(email) 
 {
@@ -14,6 +24,56 @@ function validar_email(email)
     return regex.test(email) ? true : false;
 }
 
+window.onload = () => {
+    getSession();   // Buscamos la sesión actual
+    setTimeout(function(){
+        loadInfo(); // Cargamos info
+        setTimeout(function(){
+            nombreUsuarioBarra.innerText = info.nombre;
+
+            for(let i = 0; i < info.listaExamen.length; i++){
+                nuevoExamenHTML = document.createElement("li");
+                nuevoExamenHTML2 = document.createElement("li");
+
+                nuevoExamenHTML2.innerHTML = "<p class=\"text-left\">" +
+                            "<strong>Materia:	</strong> " + info.listaExamen[i].materia + " <br>" + 
+							"<strong>Fecha:	</strong>" +  info.listaExamen[i].fecha	+ "<br>" +
+							"<strong>Salón:	</strong>"  + info.listaExamen[i].salon	+                    " <br>" +
+							
+						"</p>";
+                nuevoExamenHTML.innerHTML = "<a class=\"nav-link\" href=\"#\">" + info.listaExamen[i].idExamen + ". Examen de " + info.listaExamen[i].materia + "<span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span></a>";
+                
+                nuevoExamenHTML.classList.add("nav-item");
+                listaDeExamenes.append(nuevoExamenHTML);
+                infoDeXams.append(nuevoExamenHTML2);
+            }
+            
+        }, 500)
+    }, 500);
+}
+
+function agregarEditarExamen(){
+
+    examenTemp.idExamen = info.listaExamen.length + 1;
+    examenTemp.materia = materia.value;
+    examenTemp.duracion = duracion.value;
+    examenTemp.salon = salon.value;
+    examenTemp.maestro = nombreProfesor;
+    examenTemp.fecha = fecha.value;
+    examenTemp.correoMaestro = correoProfesor; 
+
+
+    info.listaExamen.push(examenTemp);
+    update(info);
+    loadInfo();
+}
+
+
+function deleteExam(){
+    info.listaExamen.splice(info.listaExamen.length-1,1);
+    update(info);
+    loadInfo();
+}
 
 
 let examen = {}; // Guardará toda la información del nuevo examen
@@ -86,14 +146,12 @@ btnGuardarExamen.addEventListener("click", function(event) {
         nombreMateria = materia.value;
         nuevoExamen = document.createElement("li");
         index = document.querySelectorAll("#examenes > li").length;
-        htmlText = "<a class=\"nav-link\" href=\"#\">" + (index + 1) + ". Examen 1 " + nombreMateria + "</a>";
+        htmlText = "<a class=\"nav-link\" href=\"#\">" + (index + 1) + ". Examen de " + nombreMateria + "<span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span></a>";
 
-        // <li class="nav-item">
-		// <a class="nav-link active" href="#">1. Examen 3 Desarrollo Web</a>
-		// </li>
         nuevoExamen.innerHTML = htmlText;
         nuevoExamen.classList.add("nav-item");
         listaDeExamenes.append(nuevoExamen);
+        agregarEditarExamen();
 
         console.log(examen); // dbug
     } else {
@@ -119,4 +177,12 @@ btnGuardarExamen.addEventListener("click", function(event) {
     profesorIsValid = 0;
     correoProfesorIsValid = 0;
     materiaIsValid = 0;
+});
+
+
+
+$('#examenes').on("click",".remover_campo",function(e) {
+    e.preventDefault();
+    $(this).parent('a').remove();
+    deleteExam();
 });

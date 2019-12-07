@@ -1,7 +1,7 @@
 body{
     width: 100%;
     height: 100%;
-    background-image: url("./front_images/mainBackground.jpg");
+    background-image: url("./mainBackground.jpg");
 }
 
 hr {

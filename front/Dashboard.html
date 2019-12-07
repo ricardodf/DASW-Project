@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>DASW</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head> 
+  <body style="background-image: linear-gradient(to right, #8baaaa 0%, #ae8b9c 100%);" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-dark bg-dark">  
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> <a class="navbar-brand" href="./Dashboard.html">Dashboard</a>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="navbar-nav">
+                            <li class="nav-item-active">
+                                 <a class="nav-link" href="./examenes.html">Exámenes</a>
+                            </li>
+                            <li class="nav-item-active">
+                                <a class="nav-link" href="./horario.html">Horario</a>
+                           </li>
+                        </ul>
+                        <ul class="navbar-nav ml-md-auto">
+                            
+                            <li class="nav-item dropdown">
+                                 <a class="nav-link dropdown-toggle" href="http://example.com" id="nombreUsuarioNavBar" data-toggle="dropdown"></a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="nombreUsuarioNavBar">
+                                      <a class="dropdown-item" href="./user.html">Mi perfil</a> 
+                                    <div class="dropdown-divider">
+                                    </div> <a class="dropdown-item" href="./home.html">Cerrar sesión</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <br>
+                <br>
+                <br>
+                <ul class="nav nav-pills">
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="text-center" style="color: aliceblue;">
+                    Calendario
+                </h3>
+                <p class="text-center" >
+                    Martes, 22 de octubre
+                </p><img alt="Calendario" src="Calendar.PNG" class="rounded mx-auto d-block" width="100%;">
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-center" style="color: aliceblue;">
+                    Semana
+                </h3>
+                <div>
+                        
+                </div>
+                <div class="progress">                     
+                    <div class="progress-bar w-100"> <br>
+                    </div>
+                </div>
+                <div><br> </div>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+
+                         <a class="nav-link btn btn-primary" href="#" data-toggle="modal" data-target="#modalNuevaTarea">Tareas <i class="fas fa-plus"></i></a>
+                    </li>
+                    <br>
+                    <br>
+                    <br>
+
+                </ul>
+                    <ul id="tareas" class="list-group">
+                    </ul>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-center"  style="color: aliceblue;">
+                    Materias
+                </h3>
+                <br>
+                <div class="col-12">
+                    <ul id="clases" class="list-group">
+                      
+                    </ul>
+                    <br>
+                    <div class="text-center">
+                      <button id="nuevaMateria" type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalNuevaMateria">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="modal fade" id="modalNuevaMateria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Registro de una nueva Clase</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Materia</span>
+                              </div>
+                              <input  id="nombreMateria" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Profesor</span>
+                              </div>
+                              <input id="nombreProfesor" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Correo del profesor</span>
+                              </div>
+                              <input id="correoProfesor" type="email" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="inputGroup-sizing-default">Salón</span>
+                                </div>
+                                <input id="salon" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                              </div>
+                            <div class="text-center">
+                              <p>Horario <i class="far fa-calendar-alt"></i></p>
+                              <div class="d-flex justify-content-between">
+                                <div>
+                                  <div class="form-check d-flex justify-content-start">
+                                    <input class="form-check-input" type="radio" value="07 - 09" id="defaultCheck1" name="hora" checked>
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      7 - 9
+                                    </label>
+                                  </div>
+                                  <div class="form-check d-flex justify-content-start">
+                                    <input class="form-check-input" type="radio" value="09 - 11" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      9 - 11
+                                    </label>
+                                  </div>
+                                  <div class="form-check d-flex justify-content-start">
+                                    <input class="form-check-input" type="radio" value="11 - 13" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      11 - 13
+                                    </label>
+                                  </div>
+                                  <div class="form-check d-flex justify-content-start">
+                                    <input class="form-check-input" type="radio" value="13 - 15" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      13 - 15
+                                    </label>
+                                  </div>
+                                </div>
+                
+                                <div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="14 - 16" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      14 - 16
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="16 - 18" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      16 - 18
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="18 - 20" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      18 - 20
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="20 - 22" id="defaultCheck1" name="hora">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      20 - 22
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <hr>
+                            <div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Lunes">
+                                <label class="form-check-label" for="inlineCheckbox1">LUNES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Martes">
+                                <label class="form-check-label" for="inlineCheckbox2">MARTES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Miercoles">
+                                <label class="form-check-label" for="inlineCheckbox3">MIÉRCOLES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Jueves">
+                                <label class="form-check-label" for="inlineCheckbox4">JUEVES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="viernes">
+                                <label class="form-check-label" for="inlineCheckbox5">VIERNES</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="Sabado">
+                                <label class="form-check-label" for="inlineCheckbox6">SÁBADO</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="guardarMateria" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal fade" id="modalNuevaTarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Crea una nueva tarea</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="inputGroup-sizing-default">Título</span>
+                                </div>
+                                <input  id="nombreTarea" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                              </div>
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="inputGroup-sizing-default">Fecha</span>
+                                </div>
+                                <input id="fechaTarea" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                              </div>
+                              
+                              <div class="input-group mb-3">
+                                    <span class="" >Descripción</span>
+                                  </div>
+                                  <input id="descripcion" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button id="btnNuevaTarea" type="button" data-dismiss="modal" class="btn btn-primary">Guardar</button>
+                                  </div>
+                                </div>
+    <!-- Optional JavaScript -->
+    <script src = "_bkFunciones.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2b9e5f253e.js" crossorigin="anonymous"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
