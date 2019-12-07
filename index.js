@@ -9,7 +9,7 @@ const app = express();
 // Asi podemos cargar todas las páginas del FRONT con solo una función
 app.use(express.static(path.join(__dirname, 'front')));
 
-// Routes de USERS
+app.use(express.json());
 app.use('/api/users', require('./routes/users'));
 
 
