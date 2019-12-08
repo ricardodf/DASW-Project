@@ -1,3 +1,4 @@
+
 /***********************************************************************************************/
 /************************************     LOGIN       ******************************************/
 let loginForm = document.querySelector('#loginForm').children[0];
@@ -12,9 +13,8 @@ btnLogin.addEventListener('click', () =>{
 
 function getUser(correo, password){
     var xhr = new XMLHttpRequest();
-    var url = `http://localhost:3000/users?correo=${correo}&password=${password}`;
+    var url = `http://localhost:5000/api/users/?correo=${correo}&password=${password}`;
     xhr.open('GET', url);
-    xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
     xhr.onload = function(){
         if(xhr.status == 200 && xhr.responseText != "[]"){
@@ -28,14 +28,15 @@ function getUser(correo, password){
 }
 
 function loadSession(id){
-    userID = {
-        "sessionID": id
-    };
+    let userToken = {
+        userId: id,
+        token: generateToken(20)+'-'+id
+    }
     var xhr = new XMLHttpRequest();
-    var url = `http://localhost:3000/currentSession`;
+    var url = `http://localhost:5000/api/token`;
     xhr.open('PUT', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(userID));
+    xhr.send(JSON.stringify(userToken));
     xhr.onload = function(){
         if(xhr.status == 200){
             window.location.href = "./Dashboard.html";
@@ -72,34 +73,22 @@ regForm.addEventListener('change', () => {
 btnRegConfirmar.addEventListener('click', () => {
     event.preventDefault();
 
-    var xhr = new XMLHttpRequest();
-    var url = `http://localhost:3000/users?correo=${regInputs[2].value}`;
-    xhr.open('GET', url);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send();
-    xhr.onload = function(){
-        if(xhr.responseText == "[]"){
-            let newUser = {
-                "id": newId,
-                "nombre": regInputs[0].value,
-                "apellido": regInputs[1].value,
-                "correo": regInputs[2].value,
-                "password": regInputs[3].value,
-                "listaMaterias": [],
-                "listaExamen": [],
-                "listaTareas": []
-            };
-            registerNewUser(newUser);
-        }
-        else{
-            alert('Usuario Inválido');
-        }
-    }
+    let newUser = {
+        "id": newId,
+        "nombre": regInputs[0].value,
+        "apellido": regInputs[1].value,
+        "correo": regInputs[2].value,
+        "password": regInputs[3].value,
+        "listaMaterias": [],
+        "listaExamenes": [],
+        "listaTareas": []
+    };
+    registerNewUser(newUser);
 });
 
 function registerNewUser(user){
     var xhr = new XMLHttpRequest();
-    var url = "http://localhost:3000/users";
+    var url = "http://localhost:5000/api/users";
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send([JSON.stringify(user)]);
@@ -114,7 +103,7 @@ function registerNewUser(user){
 
 function getIdNewUser(){
     var xhr = new XMLHttpRequest();
-    var url = `http://localhost:3000/users`;
+    var url = `http://localhost:5000/api/users`;
     xhr.open('GET', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
@@ -153,4 +142,14 @@ function sendMail() {
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
+}
+
+function dec2hex (dec) {
+    return ('0' + dec.toString(16)).substr(-2)
+}
+
+function generateToken (len) {
+    var arr = new Uint8Array((len || 40) / 2)
+    window.crypto.getRandomValues(arr)
+    return Array.from(arr, dec2hex).join('')
 }
