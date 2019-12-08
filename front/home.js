@@ -13,7 +13,7 @@ btnLogin.addEventListener('click', () =>{
 
 function getUser(correo, password){
     var xhr = new XMLHttpRequest();
-    var url = `https://dasw-application.herokuapp.com/api/users/?correo=${correo}&password=${password}`;
+    var url = `http://localhost:5000/api/users/?correo=${correo}&password=${password}`;
     xhr.open('GET', url);
     xhr.send();
     xhr.onload = function(){
@@ -33,7 +33,7 @@ function loadSession(id){
         token: generateToken(20)+'-'+id
     }
     var xhr = new XMLHttpRequest();
-    var url = `https://dasw-application.herokuapp.com/api/token`;
+    var url = `http://localhost:5000/api/token`;
     xhr.open('PUT', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(userToken));
@@ -88,7 +88,7 @@ btnRegConfirmar.addEventListener('click', () => {
 
 function registerNewUser(user){
     var xhr = new XMLHttpRequest();
-    var url = "https://dasw-application.herokuapp.com/api/users";
+    var url = "http://localhost:5000/api/users";
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send([JSON.stringify(user)]);
@@ -103,7 +103,7 @@ function registerNewUser(user){
 
 function getIdNewUser(){
     var xhr = new XMLHttpRequest();
-    var url = `https://dasw-application.herokuapp.com/api/users`;
+    var url = `http://localhost:5000/api/users`;
     xhr.open('GET', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();

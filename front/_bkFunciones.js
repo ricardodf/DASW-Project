@@ -11,7 +11,7 @@ let info = {};  // Toda la info del usuario
 // Buscar ID de sesión del usuario
 function getSession(){
     var xhr = new XMLHttpRequest();
-    var url = "https://dasw-application.herokuapp.com/api/token";
+    var url = "http://localhost:5000/api/token";
     xhr.open('GET', url);
     xhr.send();
     xhr.onload = function(){ 
@@ -24,7 +24,7 @@ function getSession(){
 // Pedir al SERVER, la info del usuario actual
 function loadInfo(){
     var xhr = new XMLHttpRequest();
-    var url = `https://dasw-application.herokuapp.com/api/users?id=${session}`;
+    var url = `http://localhost:5000/api/users?id=${session}`;
     xhr.open('GET', url);
     xhr.send();
     xhr.onload = function(){ 
@@ -41,7 +41,7 @@ function loadInfo(){
 ******************************* MANDAR NUEVA INFO A SERVER *************************************/
 function update(newInfo){
     var xhr = new XMLHttpRequest();
-    var url = `https://dasw-application.herokuapp.com/api/users/${session}`;
+    var url = `http://localhost:5000/api/users/${session}`;
     xhr.open('PUT', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send([JSON.stringify(newInfo)]);

@@ -69,6 +69,7 @@ function agregarEditarExamen(){
 
 
     info.listaExamenes.push(examenTemp);
+    console.log(info);
     update(info);
     loadInfo();
 }
@@ -86,6 +87,7 @@ function editarExamen(){
     examenTemp.fecha = editFechaExamen.value;
 
     info.listaExamenes.push(examenTemp);
+    console.log(info);
     update(info);
     loadInfo();
 }
@@ -99,7 +101,6 @@ function agregarEditarExamen(){
     examenTemp.maestro = nombreProfesor.value;
     examenTemp.fecha = fecha.value;
     examenTemp.correoMaestro = correoProfesor.value; 
-
 
     info.listaExamenes.push(examenTemp);
     update(info);
