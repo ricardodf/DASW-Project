@@ -1,8 +1,12 @@
 const mongoose = require('./mongodb-connect')
 
 let tokenSchema = mongoose.Schema({
+    unique: {
+        type: Number,
+        required: true
+    },
     userId: {
-        type: String,
+        type: Number,
         required: true
     },
     token: {

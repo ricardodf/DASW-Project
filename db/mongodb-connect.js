@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('./mongodb-config.json');
 
-console.log(config.dbuser);
-console.log(config.dbpsw);
-console.log(encodeURIComponent(config.dbpsw));
+mongoose.set('useFindAndModify', false);
 
 let URI = `mongodb+srv://admin:admin@cluster0-af2v0.mongodb.net/users?retryWrites=true&w=majority`;
 console.log(URI);
