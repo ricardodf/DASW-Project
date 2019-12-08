@@ -36,17 +36,17 @@ window.onload = () => {
         setTimeout(function(){
             nombreUsuarioBarra.innerText = info.nombre;
 
-            for(let i = 0; i < info.listaExamen.length; i++){
+            for(let i = 0; i < info.listaExamenes.length; i++){
                 nuevoExamenHTML = document.createElement("li");
                 nuevoExamenHTML2 = document.createElement("li");
 
                 nuevoExamenHTML2.innerHTML = "<p class=\"text-left\">" +
-                            "<strong>Materia:	</strong> " + info.listaExamen[i].materia + " <br>" + 
-							"<strong>Fecha:	</strong>" +  info.listaExamen[i].fecha	+ "<br>" +
-							"<strong>Salón:	</strong>"  + info.listaExamen[i].salon	+                    " <br>" +
+                            "<strong>Materia:	</strong> " + info.listaExamenes[i].materia + " <br>" + 
+							"<strong>Fecha:	</strong>" +  info.listaExamenes[i].fecha	+ "<br>" +
+							"<strong>Salón:	</strong>"  + info.listaExamenes[i].salon	+                    " <br>" +
 							
 						"</p>";
-                nuevoExamenHTML.innerHTML = "<a class=\"nav-link\" href=\"#\">" + info.listaExamen[i].idExamen + ". Examen de " + info.listaExamen[i].materia + "<span class=\"btn btn-light editar_campo\"><i class=\"far fa-edit\"></i></span><span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span>";
+                nuevoExamenHTML.innerHTML = "<a class=\"nav-link\" href=\"#\">" + info.listaExamenes[i].idExamen + ". Examen de " + info.listaExamenes[i].materia + "<span class=\"btn btn-light editar_campo\"><i class=\"far fa-edit\"></i></span><span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span>";
                 
                 nuevoExamenHTML.classList.add("nav-item");
                 listaDeExamenes.append(nuevoExamenHTML);
@@ -59,7 +59,7 @@ window.onload = () => {
 
 function agregarEditarExamen(){
 
-    examenTemp.idExamen = info.listaExamen.length + 1;
+    examenTemp.idExamen = info.listaExamenes.length + 1;
     examenTemp.materia = materia.value;
     examenTemp.duracion = duracion.value;
     examenTemp.salon = salon.value;
@@ -68,7 +68,7 @@ function agregarEditarExamen(){
     examenTemp.correoMaestro = correoProfesor; 
 
 
-    info.listaExamen.push(examenTemp);
+    info.listaExamenes.push(examenTemp);
     update(info);
     loadInfo();
 }
@@ -78,21 +78,21 @@ btnEditarExamen.addEventListener("click", function (e) {
 })
 
 function editarExamen(){
-    info.listaExamen.splice(info.listaExamen.length-1,1);
+    info.listaExamenes.splice(info.listaExamenes.length-1,1);
 
-    examenTemp.idExamen = info.listaExamen.length + 1;
+    examenTemp.idExamen = info.listaExamenes.length + 1;
     examenTemp.materia = editMateriaExamen.value;
     examenTemp.salon = editSalonExamen.value;
     examenTemp.fecha = editFechaExamen.value;
 
-    info.listaExamen.push(examenTemp);
+    info.listaExamenes.push(examenTemp);
     update(info);
     loadInfo();
 }
 
 function agregarEditarExamen(){
 
-    examenTemp.idExamen = info.listaExamen.length + 1;
+    examenTemp.idExamen = info.listaExamenes.length + 1;
     examenTemp.materia = materia.value;
     examenTemp.duracion = duracion.value;
     examenTemp.salon = salon.value;
@@ -101,14 +101,14 @@ function agregarEditarExamen(){
     examenTemp.correoMaestro = correoProfesor; 
 
 
-    info.listaExamen.push(examenTemp);
+    info.listaExamenes.push(examenTemp);
     update(info);
     loadInfo();
 }
 
 
 function deleteExam(){
-    info.listaExamen.splice(info.listaExamen.length-1,1);
+    info.listaExamenes.splice(info.listaExamenes.length-1,1);
     update(info);
     loadInfo();
 }
@@ -228,9 +228,9 @@ $('#examenes').on("click",".remover_campo",function(e) {
 $('#examenes').on("click",".editar_campo",function(e) {
     e.preventDefault();
 
-    editMateriaExamen.value = info.listaExamen[info.listaExamen.length -1].materia;
-    editFechaExamen.value = info.listaExamen[info.listaExamen.length -1].fecha;
-    editSalonExamen.value = info.listaExamen[info.listaExamen.length -1].salon;
+    editMateriaExamen.value = info.listaExamenes[info.listaExamenes.length -1].materia;
+    editFechaExamen.value = info.listaExamenes[info.listaExamenes.length -1].fecha;
+    editSalonExamen.value = info.listaExamenes[info.listaExamenes.length -1].salon;
 
     $('#modalEditarExamen').modal('show'); // abrir
 });
