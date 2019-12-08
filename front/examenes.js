@@ -96,9 +96,9 @@ function agregarEditarExamen(){
     examenTemp.materia = materia.value;
     examenTemp.duracion = duracion.value;
     examenTemp.salon = salon.value;
-    examenTemp.maestro = nombreProfesor;
+    examenTemp.maestro = nombreProfesor.value;
     examenTemp.fecha = fecha.value;
-    examenTemp.correoMaestro = correoProfesor; 
+    examenTemp.correoMaestro = correoProfesor.value; 
 
 
     info.listaExamenes.push(examenTemp);
