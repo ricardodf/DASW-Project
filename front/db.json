@@ -106,15 +106,22 @@
       "listaExamen": [
         {
           "idExamen": 1,
-          "materia": "Fundamentos de micros",
-          "duracion": "420 minutos",
+          "materia": "Fundamentos de microprocesadores",
+          "duracion": -1,
           "salon": "Mezanine",
-          "maestro": {},
-          "correoMaestro": {},
+          "maestro": "",
+          "correoMaestro": "",
           "fecha": "26 de novimebre"
         }
       ],
-      "listaTareas": []
+      "listaTareas": [
+        {
+          "idTarea": 1,
+          "titulo": "a",
+          "descripcion": "a",
+          "fechaEntrega": "a"
+        }
+      ]
     }
   ],
   "currentSession": {

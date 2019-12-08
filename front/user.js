@@ -114,10 +114,10 @@ let correoProfesorIsValid = 0;
 let salonIsValid = 0;
 
 function editarMateria(materia){
-    
+
     info.listaMaterias.splice(info.listaMaterias.length -1 ,1);
 
-    materiaTemp.idMateria = info.listaMaterias.length;
+    materiaTemp.idMateria = info.listaMaterias.length+1;
     materiaTemp.titulo = nombreEditarMateria.value;
     materiaTemp.maestro = nombreEditarProfesor.value;
     materiaTemp.correoMaestro = correoEditarProfesor.value;
@@ -231,6 +231,8 @@ $('#clases').on("click",".remover_campo",function(e) {
     $(this).parent('li').remove();
     deleteMateria();
 });
+
+
 
 window.onload = () => {
     getSession();   // Buscamos la sesión actual

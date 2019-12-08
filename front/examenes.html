@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-	<title>Title</title>
+	<title>DASW</title>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -228,6 +228,49 @@
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						<button id="guardarExamen" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
 					  </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="modalEditarExamen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="modal-title" id="exampleModalLabel">Editar un examen</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+					  <div class="input-group mb-3">
+						<div class="input-group-prepend">
+						  <span class="input-group-text" id="inputGroup-sizing-default">Materia</span>
+						</div>
+						<input  id="editMateriaExamen" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					  </div>
+					  <div class="input-group mb-3">
+						<div class="input-group-prepend">
+						  <span class="input-group-text" id="inputGroup-sizing-default">Fecha</span>
+						</div>
+						<input id="editFechaExamen" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					  </div>
+					  <div class="input-group mb-3">
+						<div class="input-group-prepend">
+						  <span class="input-group-text" id="inputGroup-sizing-default">Salón</span>
+						</div>
+						<input id="editSalonExamen" type="text" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					  </div>
+					  
+					 
+		
+					  </div>
+					  <div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button id="btnEditarExamen" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+						  </div>
+						</div>
+					</div>
+				</div>
 
 
 

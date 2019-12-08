@@ -25,6 +25,7 @@ let materiaTemp = {
 let nombreUsuarioBarra = document.getElementById("nombreUsuarioNavBar");
 let nuevaTareaHTML;
 let nuevaMateriaHTML;
+let btnEditTarea = document.getElementById("btnEditTarea");
 
 window.onload = () => {
     getSession();   // Buscamos la sesión actual
@@ -32,17 +33,15 @@ window.onload = () => {
         loadInfo(); // Cargamos info
         setTimeout(function(){
             nombreUsuarioBarra.innerText = info.nombre;
-            console.log(info.listaTareas.length)
             for(let i = 0; i < info.listaTareas.length; i++){
                 nuevaTareaHTML = document.createElement("li");
-                nuevaTareaHTML.innerHTML = info.listaTareas[i].titulo + "<span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span></a>";
+                nuevaTareaHTML.innerHTML = info.listaTareas[i].titulo + "<span class=\"btn btn-light editar_campo\" ><i class=\"far fa-edit\"></i></span><span class=\"btn btn-light remover_campo\"><i class=\"far fa-trash-alt\"></i></span>" ;
                 nuevaTareaHTML.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
                 listaDeTareas.append(nuevaTareaHTML);
             }
 
             for(let i = 0; i < info.listaMaterias.length; i++){
                 nuevaMateriaHTML = document.createElement("li");
-                console.log(info.listaMaterias[i].titulo);
                 nuevaMateriaHTML.innerHTML = info.listaMaterias[i].titulo ;
                 nuevaMateriaHTML.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
                 listaDeMaterias.append(nuevaMateriaHTML);
@@ -59,9 +58,6 @@ function agregarEditarTarea(tarea){
     tareaTemp.titulo = tarea.titulo;
     tareaTemp.descripcion = tarea.descripcion;
     tareaTemp.fechaEntrega = tarea.fecha;
-
-    console.log(info);
-    console.log(info.listaTareas);
 
     info.listaTareas.push(tareaTemp);
     update(info);
@@ -81,6 +77,23 @@ function agregarEditarMateria(materia){
     console.log(info.listaMaterias);
 
     info.listaMaterias.push(materiaTemp);
+    update(info);
+    loadInfo();
+}
+
+btnEditTarea.addEventListener("click", function (e) {
+    editarTarea();
+})
+
+function editarTarea(materia){
+    info.listaTareas.splice(info.listaTareas.length-1, 1);
+
+    tareaTemp.idTarea = info.listaTareas.length+1;
+    tareaTemp.titulo = editNombreTarea.value;
+    tareaTemp.descripcion = editFechaTarea.value;
+    tareaTemp.fechaEntrega = editDescripcion.value;
+
+    info.listaTareas.push(tareaTemp);
     update(info);
     loadInfo();
 }
@@ -287,4 +300,15 @@ $('#tareas').on("click",".remover_campo",function(e) {
     e.preventDefault();
     $(this).parent('li').remove();
     deleteTarea();
+});
+
+$('#tareas').on("click",".editar_campo",function(e) {
+    e.preventDefault();
+
+    editNombreTarea.value = info.listaTareas[info.listaTareas.length-1].titulo;
+    editFechaTarea.value = info.listaTareas[info.listaTareas.length-1].fechaEntrega;
+    editDescripcion.value = info.listaTareas[info.listaTareas.length-1].descripcion;
+
+    $('#modalEditarTarea').modal('show'); // abrir
+
 });
