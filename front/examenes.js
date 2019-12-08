@@ -191,7 +191,6 @@ btnGuardarExamen.addEventListener("click", function(event) {
         listaDeExamenes.append(nuevoExamen);
         agregarEditarExamen();
 
-        console.log(examen); // dbug
     } else {
         // console.log(materiaIsValid);
         // console.log(profesorIsValid);
