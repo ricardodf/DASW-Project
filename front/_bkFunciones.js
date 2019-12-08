@@ -3,10 +3,6 @@
 let session;    // ID del usuario actual
 let info = {};  // Toda la info del usuario
 
-
-
-
-
 /***********************************************************************************************
 ******************************* CUANDO SE ABRE UNA PÁGINA *************************************/
 
@@ -15,12 +11,12 @@ let info = {};  // Toda la info del usuario
 // Buscar ID de sesión del usuario
 function getSession(){
     var xhr = new XMLHttpRequest();
-    var url = "http://localhost:3000/currentSession";
+    var url = "http://localhost:5000/api/token";
     xhr.open('GET', url);
     xhr.send();
     xhr.onload = function(){ 
         if(xhr.status == 200){
-            session = (JSON.parse(xhr.responseText)).sessionID;
+            session = (JSON.parse(xhr.responseText))[0].userId;
         }
     }
 }
@@ -28,12 +24,12 @@ function getSession(){
 // Pedir al SERVER, la info del usuario actual
 function loadInfo(){
     var xhr = new XMLHttpRequest();
-    var url = `http://localhost:3000/users/${session}`;
+    var url = `http://localhost:5000/api/users?id=${session}`;
     xhr.open('GET', url);
     xhr.send();
     xhr.onload = function(){ 
         if(xhr.status == 200){
-            info = JSON.parse(xhr.responseText);
+            info = JSON.parse(xhr.responseText)[0];
         }
         else{
             console.log('Loading failure');
@@ -45,7 +41,7 @@ function loadInfo(){
 ******************************* MANDAR NUEVA INFO A SERVER *************************************/
 function update(newInfo){
     var xhr = new XMLHttpRequest();
-    var url = `http://localhost:3000/users/${session}`;
+    var url = `http://localhost:5000/api/users?id=${session}`;
     xhr.open('PUT', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send([JSON.stringify(newInfo)]);
