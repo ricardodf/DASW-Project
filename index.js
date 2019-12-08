@@ -1,7 +1,7 @@
 const express = require ('express');
 const randomize = require('randomatic');
 const path = require('path');
-const port = process.env.port || 5000;  // Talvez no sea en en el 5000, asi que primero checo la variable de ambiente.
+const port = process.env.PORT || 5000;  // Talvez no sea en en el 5000, asi que primero checo la variable de ambiente.
 
 const app = express();
 
