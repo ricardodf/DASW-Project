@@ -43,22 +43,10 @@ let userSchema = mongoose.Schema({
                 type: String,
                 required: true
             },
-            Horario: [
-                {
-                    dia: {
-                        type: String,
-                        required: true
-                    },
-                    horaInicio: {
-                        type: Number,
-                        required: true
-                    },
-                    horaFinal: {
-                        type: Number,
-                        required: true
-                    }
-                }
-            ]
+            Horario: {
+                type: String,
+                required: true
+            }
         }
     ],
     listaExamenes: [
@@ -88,18 +76,8 @@ let userSchema = mongoose.Schema({
                 required: true
             },
             fecha: {
-                dia: {
-                    type: Number,
-                    required: true
-                },
-                mes: {
-                    type: String,
-                    required: true
-                },
-                año: {
-                    type: Number,
-                    required: true
-                }
+                type: String,
+                required: true
             }
         }
     ],
@@ -117,31 +95,9 @@ let userSchema = mongoose.Schema({
                 type: String,
                 required: true
             },
-            materia: {
+            fecha: {
                 type: String,
                 required: true
-            },
-            fecha: {
-                dia: {
-                    type: Number,
-                    required: true
-                },
-                mes: {
-                    type: String,
-                    required: true
-                },
-                año: {
-                    type: Number,
-                    required: true
-                },
-                hora: {
-                    type: Number,
-                    required: true
-                },
-                minutos: {
-                    type: Number,
-                    required: true
-                },
             }
         }
     ]
