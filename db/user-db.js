@@ -60,7 +60,7 @@ let userSchema = mongoose.Schema({
                 required: true
             },
             duracion: {
-                type: Number,
+                type: String,
                 required: true
             },
             salon: {
@@ -71,11 +71,11 @@ let userSchema = mongoose.Schema({
                 type: String,
                 required: true
             },
-            correoMaestro : {
+            fecha: {
                 type: String,
                 required: true
             },
-            fecha: {
+            correoMaestro : {
                 type: String,
                 required: true
             }
