@@ -3,7 +3,7 @@ let tareaTemp = {
     "idTarea": -1,
     "titulo": "",
     "descripcion": "",
-    "fechaEntrega": ""
+    "fecha": ""
 };
 
 let materiaTemp = {
@@ -26,10 +26,6 @@ let nombreUsuarioBarra = document.getElementById("nombreUsuarioNavBar");
 let nuevaTareaHTML;
 let nuevaMateriaHTML;
 let btnEditTarea = document.getElementById("btnEditTarea");
-
-let editNombreTarea = document.getElementById("editNombreTarea");
-let editFechaTarea = document.getElementById("editFechaTarea");
-let editDescripcion = document.getElementById("editDescripcion");
 
 window.onload = () => {
     getSession();   // Buscamos la sesión actual
@@ -61,9 +57,10 @@ function agregarEditarTarea(tarea){
     tareaTemp.idTarea = info.listaTareas.length+1;
     tareaTemp.titulo = tarea.titulo;
     tareaTemp.descripcion = tarea.descripcion;
-    tareaTemp.fechaEntrega = tarea.fecha;
+    tareaTemp.fecha = tarea.fecha;
 
     info.listaTareas.push(tareaTemp);
+    console.log(info);
     update(info);
     loadInfo();
 }
@@ -95,7 +92,7 @@ function editarTarea(materia){
     tareaTemp.idTarea = info.listaTareas.length+1;
     tareaTemp.titulo = editNombreTarea.value;
     tareaTemp.descripcion = editDescripcion.value;
-    tareaTemp.fechaEntrega = editFechaTarea.value;
+    tareaTemp.fecha = editFechaTarea.value;
 
     info.listaTareas.push(tareaTemp);
     update(info);
@@ -310,7 +307,7 @@ $('#tareas').on("click",".editar_campo",function(e) {
     e.preventDefault();
 
     editNombreTarea.value = info.listaTareas[info.listaTareas.length-1].titulo;
-    editFechaTarea.value = info.listaTareas[info.listaTareas.length-1].fechaEntrega;
+    editFechaTarea.value = info.listaTareas[info.listaTareas.length-1].fecha;
     editDescripcion.value = info.listaTareas[info.listaTareas.length-1].descripcion;
 
     $('#modalEditarTarea').modal('show'); // abrir
