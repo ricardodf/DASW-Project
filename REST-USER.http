@@ -2,48 +2,52 @@
 GET http://localhost:5000/api/users?correo=a@a.com&password=a
 
 ### Get User by ID
-GET http://localhost:5000/api/users?id=4
+GET https://dasw-application.herokuapp.com/api/users?id=100
 
 ### Post nuevo usuario
-POST http://localhost:5000/api/users
+POST https://dasw-application.herokuapp.com/api/users
 Content-Type: application/json
 
 {
-      "id": 3,
-      "nombre": "BBB",
-      "apellido": "b",
-      "correo": "b@b.com",
-      "password": "b",
+      "id": 100,
+      "nombre": "Óscar",
+      "apellido": "González",
+      "correo": "ogonzalez@iteso.mx",
+      "password": "123456",
       "listaMaterias": [],
       "listaExamenes": [],
       "listaTareas": []
     }
 
 ### Actualizar usuario
-PUT http://localhost:5000/api/users/3
+PUT https://dasw-application.herokuapp.com/api/users/2
 Content-Type: application/json
 
 {
-      "nombre": "se",
-      "apellido": "dgas",
-      "correo": "d@d.com",
-      "password": "d",
+      "nombre": "Ricardo",
+      "apellido": "Díaz",
+      "correo": "rdiaz@iteso.mx",
+      "password": "helloWorld",
       "listaMaterias": [],
       "listaExamenes": [],
       "listaTareas": []
     }
 
 ### Eliminar usuario
-DELETE http://localhost:5000/api/users/9
+DELETE https://dasw-application.herokuapp.com/api/users/4
 
 ### Cargar Token
-PUT http://localhost:5000/api/token
+PUT https://dasw-application.herokuapp.com/api/token
 Content-Type: application/json
 
 {
-  "userId": 1,
-  "token": "AAAA"
+  "userId": 2,
+  "token": "BBBB"
 }
 
 ### Ir por token
-GET http://localhost:5000/api/token
+GET https://dasw-application.herokuapp.com/api/token
+
+
+### POST token
+POST https://dasw-application.herokuapp.com/api/token
