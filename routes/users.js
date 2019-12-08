@@ -2,27 +2,40 @@ const express = require('express');
 const router = express.Router();
 const Users = require('../db/user-db');     // Datos de la "base de datos"// Gets USERS in db
 
-// Todos los usuarios
-router.get('/', (req, res) => {
-    Users.find()
-        .then(Users => {
-            res.statusCode = 200;
-            res.json({ Users});
-            res.send();
-        })
-        .catch(reason => {
-            res.statusCode = 500;
-            res.end();
-        });
-});
 
 // Tomar un solo usuario
-router.get('/:id', (req, res) => {
-    Users.find({id: req.params.id }, (err, user) => {
-        if(err) 
-            return res.status(500).send(err);
-        return res.status(200).send(user);
-    })
+router.get('/', (req, res) => {
+    let target = req.query
+    if(Object.entries(target).length){
+        if(target.id === undefined){
+            Users.find(
+                {correo: target.correo, password: target.password},
+                (err, user) => {
+                    if(err || user == '[]')
+                        return res.status(500).send(err);
+                    return res.status(200).send(user);
+                }
+            );
+        }
+        else{
+            Users.find(
+                {id: target.id},
+                (err, user) => {
+                    if(err || user == '[]')
+                        return res.status(500).send(err);
+                    return res.status(200).send(user);
+                }
+            );
+        }
+    }
+    else{
+        Users.find((err, user) => {
+            if(err)
+                return res.status(500).send(err);
+            return res.status(200).send(user);
+        });
+    }
+    
 });
 
 // Crear un usuario
