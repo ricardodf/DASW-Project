@@ -41,7 +41,7 @@ function loadInfo(){
 ******************************* MANDAR NUEVA INFO A SERVER *************************************/
 function update(newInfo){
     var xhr = new XMLHttpRequest();
-    var url = `http://localhost:5000/api/users?id=${session}`;
+    var url = `http://localhost:5000/api/users/${session}`;
     xhr.open('PUT', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send([JSON.stringify(newInfo)]);
